@@ -4,42 +4,45 @@ import { useTranslation } from "react-i18next";
 interface LoadingSpinnerProps {
   message?: string;
   className?: string;
+  /** sm: 10, md: 16, lg: 20 (default md) */
+  size?: "sm" | "md" | "lg";
 }
+
+const sizeMap = { sm: "h-10 w-10", md: "h-16 w-16", lg: "h-20 w-20" };
+const borderMap = { sm: "border-2", md: "border-[3px]", lg: "border-4" };
 
 const LoadingSpinner = ({
   message,
   className,
+  size = "md",
 }: LoadingSpinnerProps) => {
-
   const { t } = useTranslation();
-
-  message = message || t("Yuklanmoqda...");
+  const displayMessage = message ?? t("Yuklanmoqda...");
 
   return (
     <div
       className={cn(
-        // O'zgarishlar shu qatorda:
-        "fixed inset-0 z-50 flex flex-col items-center justify-center bg-background/90 backdrop-blur-md",
+        "fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 bg-background/90 backdrop-blur-sm",
         className
       )}
     >
-      <div className="relative h-16 w-16">
-        {/* Orqa fon halqasi (xira) */}
-        <div className="absolute inset-0 rounded-full border-4 border-muted-foreground/20"></div>
-
-        {/* Aylanuvchi asosiy halqa */}
-        <div className="absolute inset-0 rounded-full border-4 border-primary border-t-transparent animate-spin duration-1000"></div>
-
-        {/* O'rtadagi kichik nuqta */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="h-2 w-2 rounded-full bg-primary animate-pulse"></div>
-        </div>
+      <div className={cn("relative", sizeMap[size])}>
+        <div
+          className={cn(
+            "absolute inset-0 rounded-full border-muted-foreground/15",
+            borderMap[size]
+          )}
+        />
+        <div
+          className={cn(
+            "absolute inset-0 rounded-full border-primary border-t-transparent animate-spin",
+            borderMap[size]
+          )}
+        />
       </div>
-
-      {/* Matn */}
-      {message && (
-        <p className="mt-4 text-sm font-medium text-muted-foreground animate-pulse tracking-wide uppercase">
-          {message}
+      {displayMessage && (
+        <p className="text-sm text-muted-foreground font-medium max-w-[200px] text-center">
+          {displayMessage}
         </p>
       )}
     </div>

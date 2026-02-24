@@ -28,14 +28,11 @@ interface Props {
   };
 }
 
-// Tab turlari uchun union type
 type FilterType = "all" | "news" | "announcement";
 
 export const NewsSection = ({ data }: Props) => {
   const navigate = useNavigate();
   const { i18n, t } = useTranslation();
-
-  // 1. State: Qaysi tab tanlangani
   const [filter, setFilter] = useState<FilterType>("all");
 
   const dateLocales: Record<string, string> = {
@@ -45,7 +42,6 @@ export const NewsSection = ({ data }: Props) => {
   };
   const currentLocale = dateLocales[i18n.language] || "uz-UZ";
 
-  // 2. Tabga qarab ma'lumotni tanlash
   const getDisplayData = () => {
     switch (filter) {
       case "news":
@@ -57,103 +53,114 @@ export const NewsSection = ({ data }: Props) => {
     }
   };
 
-  // 3. Tabga qarab tugma matnini tanlash
   const getButtonText = () => {
     if (filter === "news") return t("Barcha yangiliklarni ko'rish");
     if (filter === "announcement") return t("Barcha e'lonlarni ko'rish");
     return t("Barchasini ko'rish");
   };
 
+  const headline =
+    i18n.language === "uz"
+      ? { label: "Yangiliklar", title: "Yangiliklar va", highlight: "e'lonlar" }
+      : i18n.language === "ru"
+        ? { label: "Новости", title: "Новости и", highlight: "объявления" }
+        : { label: "News", title: "News and", highlight: "announcements" };
+
+  const description =
+    i18n.language === "uz"
+      ? "GGI dagi so'nggi yangiliklar, ilmiy yutuqlar va tadbirlardan xabardor bo'ling."
+      : i18n.language === "ru"
+        ? "Будьте в курсе последних новостей, научных достижений и мероприятий GGI."
+        : "Stay updated with the latest news, research and events at GGI.";
+
   const currentItems = getDisplayData();
 
   return (
-    <section className="container max-w-5xl mx-auto px-4 md:px-0 text-center py-12 md:py-28">
-      <div className="space-y-10">
-        <div className="space-y-6">
-          <Fade
-            delay={300}
-            duration={1000}
-            triggerOnce
-            direction="up"
-            cascade
-            damping={0.3}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-center">
-              {i18n.language === "uz" ? (
-                <>
-                  Yangiliklar va{" "}
-                  <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-                    E'lonlar
-                  </span>
-                </>
-              ) : i18n.language === "ru" ? (
-                <>
-                  Новости и{" "}
-                  <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-                    объявления
-                  </span>
-                </>
-              ) : (
-                <>
-                  News and{" "}
-                  <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-                    Announcements
-                  </span>
-                </>
-              )}
-            </h2>
-            <p className="text-xl text-muted-foreground text-center font-light">
-              {t(
-                "GGI dagi so'nggi yangiliklar, ilmiy yutuqlar va tadbirlardan xabardor bo'ling",
-              )}
-            </p>
+    <section className="relative py-20 md:py-28 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container relative max-w-6xl mx-auto px-4 md:px-6">
+        <div className="space-y-14 md:space-y-16">
+          {/* Header — About ga mos */}
+          <div className="text-center space-y-6 max-w-3xl mx-auto">
+            <Fade triggerOnce duration={600} direction="up" cascade damping={0.4}>
+              <p className="text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-primary">
+                {headline.label}
+              </p>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
+                {headline.title}{" "}
+                <span className="bg-gradient-to-r from-primary via-primary/80 to-accent text-transparent bg-clip-text">
+                  {headline.highlight}
+                </span>
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground font-light leading-relaxed">
+                {description}
+              </p>
+            </Fade>
+          </div>
+
+          {/* Tabs — zamonaviy */}
+          <Fade triggerOnce duration={500} direction="up">
+            <div className="flex flex-wrap justify-center">
+              <Tabs value={filter} onValueChange={(v) => setFilter(v as FilterType)}>
+                <TabsList className="h-12 p-1.5 rounded-xl bg-muted/50 border border-border/60">
+                  <TabsTrigger
+                    value="all"
+                    className="rounded-lg px-5 data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                  >
+                    {t("Barchasi")}
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="news"
+                    className="rounded-lg px-5 data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                  >
+                    {t("Yangiliklar")}
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="announcement"
+                    className="rounded-lg px-5 data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                  >
+                    {t("E'lonlar")}
+                  </TabsTrigger>
+                </TabsList>
+              </Tabs>
+            </div>
+          </Fade>
+
+          {/* Kartochkalar */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {currentItems.map((item, idx) => (
+              <Fade
+                key={`${filter}-${item.id}`}
+                triggerOnce
+                delay={idx * 80}
+                duration={500}
+                direction="up"
+              >
+                <NewsCard
+                  item={item as unknown as PostItem}
+                  navigate={navigate}
+                  locale={currentLocale}
+                />
+              </Fade>
+            ))}
+          </div>
+
+          {/* Tugma */}
+          <Fade triggerOnce duration={500} direction="up">
+            <div className="flex justify-center pt-4">
+              <Button
+                size="lg"
+                className="rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground shadow-md hover:shadow-lg transition-all duration-300 gap-2 group"
+                onClick={() => navigate(`/news?type=${filter}`)}
+              >
+                {getButtonText()}
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </Button>
+            </div>
           </Fade>
         </div>
-
-        {/* FILTER TABS */}
-        <div className="flex flex-wrap justify-center">
-          <Tabs value={filter} onValueChange={(v) => setFilter(v as FilterType)}>
-            <TabsList>
-              <TabsTrigger value="all">{t("Barchasi")}</TabsTrigger>
-              <TabsTrigger value="news">{t("Yangiliklar")}</TabsTrigger>
-              <TabsTrigger value="announcement">{t("E'lonlar")}</TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </div>
-
-        {/* CONTENT */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {currentItems.map((item, idx) => (
-            <Fade
-              key={`${filter}-${item.id}`}
-              delay={100 + idx * 50}
-              duration={800}
-              triggerOnce
-              direction="up"
-            >
-              <NewsCard
-                item={item as unknown as PostItem}
-                navigate={navigate}
-                locale={currentLocale}
-              />
-            </Fade>
-          ))}
-        </div>
-
-        {/* DYNAMIC ACTION BUTTON */}
-        <Fade delay={400} duration={1000} triggerOnce direction="up">
-          <div className="flex justify-center pt-8">
-            <Button
-              variant="outline"
-              size="lg"
-              className="group"
-              onClick={() => navigate(`/news?type=${filter}`)}
-            >
-              {getButtonText()}
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Button>
-          </div>
-        </Fade>
       </div>
     </section>
   );

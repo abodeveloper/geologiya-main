@@ -54,7 +54,7 @@ export const HeroCarousel = ({ data }: HeroCarouselProps) => {
   if (!data || data.length === 0) return null;
 
   return (
-    <section className="relative w-full h-[calc(100vh-60px)] overflow-hidden select-none">
+    <section className="relative w-full h-[calc(100vh-65px)] overflow-hidden select-none">
       <Carousel
         setApi={setApi}
         plugins={[plugin]}
@@ -67,7 +67,7 @@ export const HeroCarousel = ({ data }: HeroCarouselProps) => {
           {data.map((slide) => (
             <CarouselItem
               key={slide.id}
-              className="h-[calc(100vh-60px)] p-0 relative pl-0"
+              className="h-[calc(100vh-65px)] p-0 relative pl-0"
             >
               <div className="relative w-full h-full">
                 <img
@@ -77,7 +77,6 @@ export const HeroCarousel = ({ data }: HeroCarouselProps) => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/30" />
-
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
                   <div className="text-white max-w-4xl space-y-5 md:space-y-6 animate-in fade-in slide-in-from-bottom-6 duration-700">
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">

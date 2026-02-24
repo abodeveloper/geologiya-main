@@ -1,7 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { localized } from "@/i18n";
 import DynamicIcon from "@/shared/components/atoms/dynamic-icon/DynamicIcon";
 import { Fade } from "react-awesome-reveal";
@@ -32,161 +30,97 @@ interface Props {
 }
 
 export const PostgraduatePrograms = ({ data }: Props) => {
-
   const navigate = useNavigate();
-
   const { t, i18n } = useTranslation();
 
-  // Animatsiya yo'nalishlari
-  const directions = ["left", "up", "right", "down"];
+  const headline =
+    i18n.language === "uz"
+      ? { label: "Ta'lim", title: "Oliy ta'limdan", highlight: "keyingi ta'lim" }
+      : i18n.language === "ru"
+        ? { label: "Образование", title: "Послевузовское", highlight: "образование" }
+        : { label: "Education", title: "Postgraduate", highlight: "education" };
 
-  // Responsive Grid Logic:
-  // Agar 4 ta element bo'lsa:
-  // - md (planshet): 2 ta
-  // - lg (noutbuk): 2 ta (2x2 chiroyli turishi uchun, 3 ta sig'may qolishi mumkin)
-  // - xl (katta ekran): 4 ta
-  // Agar 3 ta (yoki boshqa) bo'lsa:
-  // - md: 2 ta
-  // - lg: 3 ta
-  const gridClassName =
-    data?.length === 4
-      ? "grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8"
-      : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center";
+  const description =
+    i18n.language === "uz"
+      ? "Ilmiy faoliyatingizni yangi bosqichga olib chiqing – PhD, DSc va magistratura dasturlarimiz orqali."
+      : i18n.language === "ru"
+        ? "Поднимите свою научную деятельность на новый уровень с помощью наших программ PhD, DSc и магистратуры."
+        : "Take your academic career to the next level with our PhD, DSc, and Master's programs.";
 
   return (
-    <section
-      id="postgraduate"
-      className="container max-w-5xl mx-auto px-4 md:px-0 py-12 md:py-28"
-    >
-      <div className="space-y-16">
-        {/* Title */}
-        <div className="space-y-6">
-          <Fade
-            delay={300}
-            duration={1000}
-            triggerOnce
-            fraction={0.5}
-            direction="up"
-            cascade
-            damping={0.3}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-center">
-              {i18n.language === "uz" ? (
-                <>
-                  Oliy ta'limdan{" "}
-                  <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-                    keyingi ta'lim
-                  </span>
-                </>
-              ) : i18n.language === "ru" ? (
-                <>
-                  Послевузовское{" "}
-                  <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-                    образование
-                  </span>
-                </>
-              ) : (
-                <>
-                  Postgraduate{" "}
-                  <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-                    Education
-                  </span>
-                </>
-              )}
-            </h2>
-            <p className="text-xl text-muted-foreground text-center font-light">
-              {i18n.language === "uz"
-                ? "Ilmiy faoliyatingizni yangi bosqichga olib chiqing – PhD, DSc va magistratura dasturlarimiz orqali"
-                : i18n.language === "ru"
-                ? "Поднимите свою научную деятельность на новый уровень с помощью наших программ PhD, DSc и магистратуры"
-                : "Take your academic career to the next level with our PhD, DSc, and Master's programs"}
-            </p>
-          </Fade>
-        </div>
+    <section id="postgraduate" className="relative py-20 md:py-28 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Cards Grid - Dinamik klass ishlatildi */}
-        <div className={`grid ${gridClassName}`}>
-          {data?.map((item, index) => {
-            // Animatsiya direction mantig'i:
-            // 4 ta bo'lsa: left, up, right, down
-            // 3 ta bo'lsa: left, up, right (down ishlatilmaydi, bu to'g'ri)
-            const currentDirection = directions[index % 4] as
-              | "left"
-              | "up"
-              | "right"
-              | "down";
+      <div className="container relative max-w-6xl mx-auto px-4 md:px-6">
+        <div className="space-y-14 md:space-y-16">
+          {/* Header — About ga mos */}
+          <div className="text-center space-y-6 max-w-3xl mx-auto">
+            <Fade triggerOnce duration={600} direction="up" cascade damping={0.4}>
+              <p className="text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-primary">
+                {headline.label}
+              </p>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
+                {headline.title}{" "}
+                <span className="bg-gradient-to-r from-primary via-primary/80 to-accent text-transparent bg-clip-text">
+                  {headline.highlight}
+                </span>
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground font-light leading-relaxed">
+                {description}
+              </p>
+            </Fade>
+          </div>
 
-            return (
+          {/* Ro'yxat — chap accent chiziq (HowItWorks kabi), kartochka yo'q */}
+          <div className="space-y-0 max-w-3xl mx-auto">
+            {data?.map((item, index) => (
               <Fade
                 key={item.id}
-                delay={200 + index * 100}
-                duration={900}
                 triggerOnce
-                direction={currentDirection}
-                damping={0.4}
-                className="h-full" // Fade konteyneri to'liq balandlikda bo'lishi uchun
+                delay={index * 60}
+                duration={400}
+                direction="up"
               >
-                <Card
-                  className={`
-                    relative overflow-hidden rounded-2xl 
-                    bg-gradient-to-b from-muted/60 to-background 
-                    border border-transparent 
-                    hover:transform hover:-translate-y-3
-                    group h-full text-left
-                    transition-all duration-500
-                    flex flex-col
-                  `}
+                <button
+                  type="button"
+                  onClick={() =>
+                    navigate(`/postgraduate-educations/${item.slug}`)
+                  }
+                  className="group w-full text-left flex items-start gap-4 py-5 px-4 rounded-xl border-l-4 border-l-primary/30 hover:border-l-primary hover:bg-muted/30 transition-all duration-300 cursor-pointer"
                 >
-                  {/* Spinning Border Effect */}
-                  <div className="absolute inset-0 rounded-2xl p-[2px] bg-[conic-gradient(from_0deg,theme(colors.primary)_0%,theme(colors.primary/60)_25%,theme(colors.primary/30)_50%,theme(colors.primary/60)_75%,theme(colors.primary)_100%)] animate-spin-slow opacity-0 group-hover:opacity-100 transition-opacity duration-1300 pointer-events-none">
-                    <div className="w-full h-full rounded-2xl bg-gradient-to-b from-muted/60 to-background" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <DynamicIcon name={item.logo} className="w-5 h-5" />
                   </div>
-
-                  <CardHeader className="relative z-10">
-                    <CardTitle className="flex flex-col gap-4 items-start text-lg font-semibold">
-                      <div
-                        className="p-3 rounded-full bg-primary/10 text-primary 
-                                   group-hover:bg-primary group-hover:text-background 
-                                   transition-all duration-300"
-                      >
-                        <DynamicIcon
-                          name={item.logo}
-                          className="w-8 h-8 transition-colors duration-300"
-                        />
-                      </div>
+                  <div className="flex-1 min-w-0 pt-0.5">
+                    <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
                       {localized(item, "title")}
-                    </CardTitle>
-                  </CardHeader>
-
-                  <CardContent className="relative z-10 px-6 pb-6 flex-grow flex flex-col justify-between">
-                    <div className="space-y-3 mb-5">
-                      <p className="text-sm text-muted-foreground">
-                        <strong>{t("Yo'nalish") || "Yo'nalish"}:</strong>{" "}
-                        {localized(item, "direction")}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        <strong>{t("Davomiyligi") || "Davomiyligi"}:</strong>{" "}
-                        {localized(item, "duration")}
-                      </p>
-                      <p className="text-sm md:text-base text-muted-foreground font-light leading-relaxed line-clamp-3">
-                        {localized(item, "sub_title")}
-                      </p>
-                    </div>
-
-                    <Button
-                      size="sm"
-                      className="w-full"
-                      onClick={() =>
-                        navigate(`/postgraduate-educations/${item.slug}`)
-                      }
-                    >
-                      {t("Batafsil") || "Batafsil ma'lumot"}
-                    </Button>
-                  </CardContent>
-                </Card>
+                    </h3>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      <span className="font-medium text-foreground/90">
+                        {t("Yo'nalish")}:
+                      </span>{" "}
+                      {localized(item, "direction")}
+                      {" · "}
+                      <span className="font-medium text-foreground/90">
+                        {t("Davomiyligi")}:
+                      </span>{" "}
+                      {localized(item, "duration")}
+                    </p>
+                    <p className="text-sm text-muted-foreground font-light leading-relaxed mt-1.5 line-clamp-2">
+                      {localized(item, "sub_title")}
+                    </p>
+                  </div>
+                  <span
+                    className="shrink-0 text-muted-foreground/60 group-hover:text-primary transition-colors mt-1.5"
+                    aria-hidden
+                  >
+                    →
+                  </span>
+                </button>
               </Fade>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>
