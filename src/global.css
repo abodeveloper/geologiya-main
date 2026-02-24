@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 6s linear infinite;
+}
+
+
+/* react-phone-number-input + ShadCN moslashtirish */
+.phone-input-custom {
+  @apply h-12 bg-muted/30 border border-border/50 rounded-xl;
+}
+
+.phone-input-custom .PhoneInputInput {
+  @apply h-full bg-transparent border-0 outline-none pl-3 text-foreground placeholder:text-muted-foreground/60;
+}
+
+.phone-input-custom .PhoneInputCountry {
+  @apply pr-3;
+}
+
+.phone-input-custom .PhoneInputCountrySelectArrow {
+  @apply ml-1 text-muted-foreground;
+}

@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ==== DARK MODE — logodagi tashqi halqa (chuqur ko‘k-binafsha #4B5282) ==== */
+  :root {
+    --background: 232 28% 14%;        /* chuqur ko‘k-binafsha, logodagi tashqi rang */
+    --foreground: 220 14% 96%;        /* logodagi ochiq matn (off-white) */
+
+    --card: 232 26% 18%;
+    --card-foreground: 220 14% 96%;
+
+    --popover: 232 26% 18%;
+    --popover-foreground: 220 14% 96%;
+
+    --primary: 232 35% 52%;           /* logodagi halqa toni, asosiy elementlar */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 232 24% 22%;
+    --secondary-foreground: 220 14% 88%;
+
+    --muted: 232 24% 22%;
+    --muted-foreground: 220 12% 65%;
+
+    --accent: 0 78% 57%;              /* logodagi qizil to‘lqin (seysmik) #E73A3A */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 78% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 232 24% 26%;
+    --input: 232 24% 26%;
+    --ring: 232 35% 52%;
+
+    --radius: 0.75rem;
+
+    /* Charts — logo palitrasi */
+    --chart-1: 232 35% 52%;
+    --chart-2: 219 25% 54%;
+    --chart-3: 0 78% 57%;
+    --chart-4: 218 31% 36%;
+    --chart-5: 204 57% 75%;
+
+    /* Sidebar */
+    --sidebar-background: 232 28% 14%;
+    --sidebar-foreground: 220 14% 96%;
+    --sidebar-primary: 232 35% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 232 24% 22%;
+    --sidebar-accent-foreground: 220 14% 88%;
+    --sidebar-border: 232 24% 26%;
+    --sidebar-ring: 232 35% 52%;
+  }
+
+  /* ==== LIGHT MODE — logodagi globus (och ko'k #C8E0F0) va GGI matn (#40557A) ==== */
+  .light {
+    --background: 204 50% 94%;        /* och ko'k, globus fon */
+    --foreground: 218 31% 22%;        /* to'q ko'k-kulrang, GGI matn (#40557A) */
+
+    --card: 204 40% 98%;
+    --card-foreground: 218 31% 22%;
+
+    --popover: 204 40% 98%;
+    --popover-foreground: 218 31% 22%;
+
+    --primary: 218 32% 38%;           /* GGI matn rangi */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 204 45% 88%;
+    --secondary-foreground: 218 31% 22%;
+
+    --muted: 204 40% 88%;
+    --muted-foreground: 218 20% 42%;
+
+    --accent: 0 78% 57%;              /* logodagi qizil to'lqin */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 78% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 204 35% 82%;
+    --input: 204 35% 82%;
+    --ring: 218 32% 38%;
+
+    /* Charts */
+    --chart-1: 218 32% 38%;
+    --chart-2: 219 25% 54%;
+    --chart-3: 0 78% 57%;
+    --chart-4: 232 35% 52%;
+    --chart-5: 204 57% 75%;
+
+    /* Sidebar */
+    --sidebar-background: 204 50% 94%;
+    --sidebar-foreground: 218 31% 22%;
+    --sidebar-primary: 218 32% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 204 45% 88%;
+    --sidebar-accent-foreground: 218 31% 22%;
+    --sidebar-border: 204 35% 82%;
+    --sidebar-ring: 218 32% 38%;
+  }
+}
+
+@layer base {
+
+  /* Mobil qurilmalarda ko'k ramkani o'chirish */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Ixtiyoriy: tugma bosilganda ko'k ramkani ham o'chirish */
+  button:focus, 
+  a:focus {
+    outline: none;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-medium;
+  }
+}
