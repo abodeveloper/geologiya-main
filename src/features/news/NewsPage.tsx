@@ -125,15 +125,18 @@ export const NewsPage = () => {
           </Fade>
         </div>
 
-        {/* FILTER TABS */}
-        <div className="flex flex-wrap justify-center mb-10 mt-10">
-          <Tabs value={currentFilter} onValueChange={handleFilterChange}>
-            <TabsList>
-              <TabsTrigger value="all">{t("Barchasi")}</TabsTrigger>
-              <TabsTrigger value="news">{t("Yangiliklar")}</TabsTrigger>
-              <TabsTrigger value="announcement">{t("E'lonlar")}</TabsTrigger>
-            </TabsList>
-          </Tabs>
+        {/* FILTER TABS — mobilda gorizontal scroll */}
+        <div className="mb-10 mt-10 w-full overflow-x-auto overflow-y-hidden no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
+          <div className="flex justify-center min-w-max md:min-w-0">
+            <Tabs value={currentFilter} onValueChange={handleFilterChange}>
+              <TabsList className="flex-nowrap w-max">
+                <TabsTrigger value="all" className="whitespace-nowrap">{t("Barchasi")}</TabsTrigger>
+                <TabsTrigger value="news" className="whitespace-nowrap">{t("Yangiliklar")}</TabsTrigger>
+                <TabsTrigger value="announcement" className="whitespace-nowrap">{t("E'lonlar")}</TabsTrigger>
+                <TabsTrigger value="desertion" className="whitespace-nowrap">{t("Desertatsiya e'lonlari")}</TabsTrigger>
+              </TabsList>
+            </Tabs>
+          </div>
         </div>
 
         {/* CONTENT */}

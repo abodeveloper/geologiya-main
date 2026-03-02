@@ -13,6 +13,7 @@ import {
 import { NewsCard } from "./components/NewsCard";
 import type { PostItem } from "@/features/dynamic-page/types";
 import { localized } from "@/i18n";
+import { formatDateLocalized, formatTimeLocalized } from "@/lib/utils";
 import ErrorMessage from "@/shared/components/atoms/error-message/ErrorMessage";
 import LoadingSpinner from "@/shared/components/atoms/loading-spinner/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
@@ -139,28 +140,19 @@ const NewsDetailPage = () => {
               <div className="space-y-4">
                 <div className="flex flex-wrap items-center gap-3 text-sm">
                   <Badge className="px-3 py-1 bg-primary/10 text-primary hover:bg-primary/20 border-none rounded-md">
-                    {news.type === "news" ? t("Yangilik") : t("E'lon")}
+                    {news.type === "news"
+                      ? t("Yangilik")
+                      : news.type === "desertion"
+                        ? t("Desertatsiya e'loni")
+                        : t("E'lon")}
                   </Badge>
                   <span className="text-muted-foreground flex items-center gap-1">
                     <CalendarDays className="w-3.5 h-3.5" />
-                    {new Date(news.published_date).toLocaleDateString(
-                      currentLocale,
-                      {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      },
-                    )}
+                    {formatDateLocalized(news.published_date, i18n.language)}
                   </span>
                   <span className="text-muted-foreground flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" />
-                    {new Date(news.published_date).toLocaleTimeString(
-                      currentLocale,
-                      {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      },
-                    )}
+                    {formatTimeLocalized(news.published_date, i18n.language)}
                   </span>
                 </div>
 
@@ -245,7 +237,9 @@ const NewsDetailPage = () => {
                 <span className="w-1 h-6 bg-primary rounded-full inline-block"></span>
                 {news.type === "news"
                   ? t("So'nggi yangiliklar")
-                  : t("So'nggi e'lonlar")}
+                  : news.type === "desertion"
+                    ? t("So'nggi desertatsiya e'lonlari")
+                    : t("So'nggi e'lonlar")}
               </h3>
 
               <div className="flex flex-col gap-4">
@@ -272,13 +266,17 @@ const NewsDetailPage = () => {
                     navigate(
                       news.type === "news"
                         ? "/news?type=news"
-                        : "/news?type=announcement",
+                        : news.type === "desertion"
+                          ? "/news?type=desertion"
+                          : "/news?type=announcement",
                     )
                   }
                 >
                   {news.type === "news"
                     ? t("Barcha yangiliklar")
-                    : t("Barcha e'lonlar")}{" "}
+                    : news.type === "desertion"
+                      ? t("Barcha desertatsiya e'lonlari")
+                      : t("Barcha e'lonlar")}{" "}
                   <ChevronRight className="w-4 h-4" />
                 </Button>
               </div>

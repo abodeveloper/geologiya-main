@@ -25,10 +25,11 @@ interface Props {
     latest_news: NewsItem[];
     latest_posts: NewsItem[];
     latest_announcements: NewsItem[];
+    latest_desertions?: NewsItem[];
   };
 }
 
-type FilterType = "all" | "news" | "announcement";
+type FilterType = "all" | "news" | "announcement" | "desertion";
 
 export const NewsSection = ({ data }: Props) => {
   const navigate = useNavigate();
@@ -48,6 +49,8 @@ export const NewsSection = ({ data }: Props) => {
         return data?.latest_news || [];
       case "announcement":
         return data?.latest_announcements || [];
+      case "desertion":
+        return data?.latest_desertions || [];
       default:
         return data?.latest_posts || [];
     }
@@ -56,6 +59,7 @@ export const NewsSection = ({ data }: Props) => {
   const getButtonText = () => {
     if (filter === "news") return t("Barcha yangiliklarni ko'rish");
     if (filter === "announcement") return t("Barcha e'lonlarni ko'rish");
+    if (filter === "desertion") return t("Barcha desertatsiya e'lonlarini ko'rish");
     return t("Barchasini ko'rish");
   };
 
@@ -100,31 +104,39 @@ export const NewsSection = ({ data }: Props) => {
             </Fade>
           </div>
 
-          {/* Tabs — zamonaviy */}
+          {/* Tabs — mobilda gorizontal scroll */}
           <Fade triggerOnce duration={500} direction="up">
-            <div className="flex flex-wrap justify-center">
-              <Tabs value={filter} onValueChange={(v) => setFilter(v as FilterType)}>
-                <TabsList className="h-12 p-1.5 rounded-xl bg-muted/50 border border-border/60">
-                  <TabsTrigger
-                    value="all"
-                    className="rounded-lg px-5 data-[state=active]:bg-background data-[state=active]:shadow-sm"
-                  >
-                    {t("Barchasi")}
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="news"
-                    className="rounded-lg px-5 data-[state=active]:bg-background data-[state=active]:shadow-sm"
-                  >
-                    {t("Yangiliklar")}
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="announcement"
-                    className="rounded-lg px-5 data-[state=active]:bg-background data-[state=active]:shadow-sm"
-                  >
-                    {t("E'lonlar")}
-                  </TabsTrigger>
-                </TabsList>
-              </Tabs>
+            <div className="w-full overflow-x-auto overflow-y-hidden no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
+              <div className="flex justify-center min-w-max md:min-w-0">
+                <Tabs value={filter} onValueChange={(v) => setFilter(v as FilterType)}>
+                  <TabsList className="h-12 p-1.5 rounded-xl bg-muted/50 border border-border/60 flex-nowrap w-max">
+                    <TabsTrigger
+                      value="all"
+                      className="rounded-lg px-5 whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                    >
+                      {t("Barchasi")}
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="news"
+                      className="rounded-lg px-5 whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                    >
+                      {t("Yangiliklar")}
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="announcement"
+                      className="rounded-lg px-5 whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                    >
+                      {t("E'lonlar")}
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="desertion"
+                      className="rounded-lg px-5 whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                    >
+                      {t("Desertatsiya e'lonlari")}
+                    </TabsTrigger>
+                  </TabsList>
+                </Tabs>
+              </div>
             </div>
           </Fade>
 

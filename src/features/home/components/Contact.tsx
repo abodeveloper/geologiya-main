@@ -132,53 +132,33 @@ export const Contact = () => {
             </Fade>
           </div>
 
-          {/* Kartochka — glass, accent chiziq, ikki ustun */}
+          {/* Kartochka — ustki qator (logo + sarlavha + matn), pastda forma | ijtimoiy */}
           <Fade triggerOnce delay={200} duration={500} direction="up">
             <div className="relative rounded-2xl border border-border/50 bg-card/70 dark:bg-card/50 backdrop-blur-sm shadow-lg overflow-hidden ring-1 ring-black/5 dark:ring-white/5">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/80 to-accent" />
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 p-6 md:p-10 lg:p-12">
-                {/* Chap: logo, sarlavha, matn, ijtimoiy */}
-                <div className="flex flex-col justify-between space-y-8">
-                  <div className="space-y-4">
-                    <img
-                      src={`${import.meta.env.VITE_API_URL || ""}${get(company, "logo")}`}
-                      alt="Logo"
-                      width={64}
-                      height={64}
-                      className="object-contain"
-                    />
-                    <div className="h-px w-12 bg-gradient-to-r from-primary/60 to-transparent rounded-full" />
-                    <h3 className="text-xl font-semibold text-foreground">
-                      {i18n.language === "uz" ? "Xabar yuboring" : i18n.language === "ru" ? "Напишите нам" : "Send a message"}
-                    </h3>
-                  </div>
-                  <div className="space-y-4">
-                    <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
-                      {t("Sizdan xabar olishdan xursand bo'lamiz. Savolingiz yoki fikringiz bo'lsa yozing.")}
-                    </p>
-                  </div>
-                  <div className="space-y-3">
-                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                      {i18n.language === "uz" ? "Ijtimoiy tarmoqlar" : i18n.language === "ru" ? "Соцсети" : "Follow us"}
-                    </p>
-                    <div className="flex gap-3 flex-wrap">
-                      {socials.map(({ Icon, href }, i) => (
-                        <a
-                          key={i}
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-3 rounded-xl bg-muted/60 text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all duration-300"
-                          aria-label="Social link"
-                        >
-                          <Icon className="w-5 h-5" />
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
 
-                {/* O'ng: forma */}
+              {/* Ustki qator: logo, sarlavha, tavsif — bitta gorizontal blok */}
+              <div className="flex flex-wrap items-center gap-4 md:gap-6 p-6 md:px-10 md:pt-10 pb-4 border-b border-border/40">
+                <img
+                  src={`${import.meta.env.VITE_API_URL || ""}${get(company, "logo")}`}
+                  alt="Logo"
+                  width={56}
+                  height={56}
+                  className="object-contain shrink-0"
+                />
+                <div className="h-10 w-px bg-border/60 hidden sm:block rounded-full" />
+                <div className="min-w-0 flex-1 space-y-1">
+                  <h3 className="text-lg md:text-xl font-semibold text-foreground">
+                    {i18n.language === "uz" ? "Xabar yuboring" : i18n.language === "ru" ? "Напишите нам" : "Send a message"}
+                  </h3>
+                  <p className="text-sm md:text-base text-muted-foreground font-light leading-relaxed max-w-2xl">
+                    {t("Sizdan xabar olishdan xursand bo'lamiz. Savolingiz yoki fikringiz bo'lsa yozing.")}
+                  </p>
+                </div>
+              </div>
+
+              {/* Pastki qism: forma (chap) | ijtimoiy (o'ng) */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 p-6 md:p-10 lg:p-12">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-sm font-medium">
@@ -258,6 +238,40 @@ export const Contact = () => {
                     )}
                   </Button>
                 </form>
+
+                {/* O'ng ustun: xarita + ijtimoiy tarmoqlar */}
+                <div className="flex flex-col gap-4 border-t lg:border-t-0 lg:border-l border-border/40 pt-8 lg:pt-0 lg:pl-8">
+                  <div className="rounded-2xl overflow-hidden border border-border/50 bg-card/50 shadow-sm h-[220px] sm:h-[260px] min-h-[200px]">
+                    <iframe
+                      title="Yandex Map"
+                      src="https://yandex.ru/map-widget/v1/?ll=69.339532%2C41.340597&z=16&l=map"
+                      width="100%"
+                      height="100%"
+                      loading="lazy"
+                      className="border-0 block w-full h-full min-h-[200px]"
+                      allowFullScreen
+                    />
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3">
+                      {i18n.language === "uz" ? "Ijtimoiy tarmoqlar" : i18n.language === "ru" ? "Соцсети" : "Follow us"}
+                    </p>
+                    <div className="flex gap-3 flex-wrap">
+                      {socials.map(({ Icon, href }, i) => (
+                        <a
+                          key={i}
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 rounded-xl bg-muted/60 text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all duration-300"
+                          aria-label="Social link"
+                        >
+                          <Icon className="w-5 h-5" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </Fade>

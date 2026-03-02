@@ -21,7 +21,7 @@ export interface NewsItem {
   pages: number[];
   published_date: string;
   status: boolean;
-  type: "news" | "announcement";
+  type: "news" | "announcement" | "desertion";
 }
 
 export interface NewsResponse {

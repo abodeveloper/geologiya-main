@@ -112,8 +112,8 @@ export const Footer = () => {
           <div className="lg:col-span-5 min-h-[250px] md:min-h-0">
             <div className="rounded-2xl overflow-hidden border border-border/50 bg-card/50 shadow-sm h-[260px] md:h-[210px]">
               <iframe
-                title="Google Map"
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2995.5407936804695!2d69.33953268800994!3d41.340597837832625!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef565c942bdd9%3A0xdbf2df130f626a7c!2z0JPQoyAi0JjQk9CY0KDQndCY0JPQnCIg0JjQndCh0KLQmNCi0KPQoiDQk9CV0J7Qm9Ce0JPQmNCYINCYINCg0JDQl9CS0JXQlNCa0Jgg0J3QldCk0KLQr9Cd0KvQpSDQmCDQk9CQ0JfQntCS0KvQpSDQnNCV0KHQotCe0KDQntCW0JTQldCd0JjQmQ!5e0!3m2!1sru!2s!4v1767847296064!5m2!1sru!2s"
+                title="Yandex Map"
+                src="https://yandex.ru/map-widget/v1/?ll=69.339532%2C41.340597&z=16&l=map"
                 width="100%"
                 height="100%"
                 loading="lazy"

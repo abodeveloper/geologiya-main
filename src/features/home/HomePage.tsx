@@ -26,6 +26,7 @@ const HomePage = () => {
           latest_posts: get(data, "latest_posts", []),
           latest_news: get(data, "latest_news", []),
           latest_announcements: get(data, "latest_announcements", []),
+          latest_desertions: get(data, "latest_desertions", []),
         }}
       />
       <HowItWorks data={get(data, "scientific_directions", [])} />
