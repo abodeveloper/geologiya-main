@@ -41,7 +41,7 @@ body, html {
 }
 
 .phone-input-custom .PhoneInputInput {
-  @apply h-full bg-transparent border-0 outline-none pl-3 text-foreground placeholder:text-muted-foreground/60;
+  @apply h-full bg-transparent border-0 outline-none pl-3 text-foreground placeholder:text-muted-foreground;
 }
 
 .phone-input-custom .PhoneInputCountry {

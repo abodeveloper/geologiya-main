@@ -149,6 +149,7 @@ export const NewsSection = ({ data }: Props) => {
                 delay={idx * 80}
                 duration={500}
                 direction="up"
+                className="h-full"
               >
                 <NewsCard
                   item={item as unknown as PostItem}
