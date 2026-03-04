@@ -275,8 +275,8 @@ const DesktopMenu = ({ items }: { items: MenuItem[] }) => {
   const inactiveStyle = "text-muted-foreground hover:text-foreground hover:bg-muted/50";
 
   return (
-    <div className="hidden md:flex flex-1 min-w-0 justify-center px-6">
-      <nav className="w-full max-w-3xl overflow-x-auto overflow-y-hidden no-scrollbar min-w-0 flex justify-start">
+    <div className="hidden md:flex flex-1 min-w-0 justify-center px-0">
+      <nav className="w-full overflow-x-auto overflow-y-hidden no-scrollbar min-w-0 flex justify-start">
         <ul className="flex items-center justify-start gap-0.5 p-1 w-max">
           {items.map((item) => {
             const hasChildren = item.children && item.children.length > 0;
@@ -447,7 +447,7 @@ export const Navbar = () => {
             alt="GGI Logo"
             className="h-11 w-auto md:h-12 object-contain transition-transform duration-200 group-hover:scale-[1.02] shrink-0"
           />
-          <div className="hidden sm:flex flex-col leading-tight min-w-0 max-w-[200px] md:max-w-[240px]">
+          <div className="hidden sm:flex flex-col leading-tight min-w-0 max-w-[200px] md:max-w-[210px]">
             <span className="text-sm font-semibold text-foreground line-clamp-2 break-words">
               {localized(company as LocalizedObject, "name")}
             </span>
