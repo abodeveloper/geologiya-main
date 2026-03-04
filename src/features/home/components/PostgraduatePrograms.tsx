@@ -48,7 +48,10 @@ export const PostgraduatePrograms = ({ data }: Props) => {
         : "Take your academic career to the next level with our PhD, DSc, and Master's programs.";
 
   return (
-    <section id="postgraduate" className="relative py-20 md:py-28 overflow-hidden">
+    <section
+      id="postgraduate"
+      className="relative py-10 md:py-12 overflow-hidden"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -56,7 +59,13 @@ export const PostgraduatePrograms = ({ data }: Props) => {
         <div className="space-y-14 md:space-y-16">
           {/* Header — About ga mos */}
           <div className="text-center space-y-6 max-w-3xl mx-auto">
-            <Fade triggerOnce duration={600} direction="up" cascade damping={0.4}>
+            <Fade
+              triggerOnce
+              duration={600}
+              direction="up"
+              cascade
+              damping={0.4}
+            >
               <p className="text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-primary">
                 {headline.label}
               </p>

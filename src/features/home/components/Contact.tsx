@@ -106,7 +106,7 @@ export const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="relative py-20 md:py-28 overflow-hidden">
+    <section id="contact" className="relative py-10 md:py-12 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background pointer-events-none" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/4 right-0 w-[400px] h-[300px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
@@ -116,7 +116,13 @@ export const Contact = () => {
         <div className="space-y-14 md:space-y-16">
           {/* Header — About / HowItWorks ga mos */}
           <div className="text-center space-y-6 max-w-3xl mx-auto">
-            <Fade triggerOnce duration={600} direction="up" cascade damping={0.4}>
+            <Fade
+              triggerOnce
+              duration={600}
+              direction="up"
+              cascade
+              damping={0.4}
+            >
               <p className="text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-primary">
                 {headline.label}
               </p>
@@ -149,10 +155,16 @@ export const Contact = () => {
                 <div className="h-10 w-px bg-border/60 hidden sm:block rounded-full" />
                 <div className="min-w-0 flex-1 space-y-1">
                   <h3 className="text-lg md:text-xl font-semibold text-foreground">
-                    {i18n.language === "uz" ? "Xabar yuboring" : i18n.language === "ru" ? "Напишите нам" : "Send a message"}
+                    {i18n.language === "uz"
+                      ? "Xabar yuboring"
+                      : i18n.language === "ru"
+                        ? "Напишите нам"
+                        : "Send a message"}
                   </h3>
                   <p className="text-sm md:text-base text-muted-foreground font-light leading-relaxed max-w-2xl">
-                    {t("Sizdan xabar olishdan xursand bo'lamiz. Savolingiz yoki fikringiz bo'lsa yozing.")}
+                    {t(
+                      "Sizdan xabar olishdan xursand bo'lamiz. Savolingiz yoki fikringiz bo'lsa yozing.",
+                    )}
                   </p>
                 </div>
               </div>
@@ -168,12 +180,16 @@ export const Contact = () => {
                       id="name"
                       placeholder={t("Ismingizni kiriting")}
                       className={`h-11 rounded-xl bg-muted/30 border-border/50 placeholder:text-muted-foreground/60 ${
-                        errors.name ? "border-red-500 focus-visible:ring-red-500" : ""
+                        errors.name
+                          ? "border-red-500 focus-visible:ring-red-500"
+                          : ""
                       }`}
                       {...register("name")}
                     />
                     {errors.name && (
-                      <p className="text-sm text-red-500">{errors.name.message}</p>
+                      <p className="text-sm text-red-500">
+                        {errors.name.message}
+                      </p>
                     )}
                   </div>
 
@@ -198,7 +214,9 @@ export const Contact = () => {
                       )}
                     />
                     {errors.phone && (
-                      <p className="text-sm text-red-500">{errors.phone.message}</p>
+                      <p className="text-sm text-red-500">
+                        {errors.phone.message}
+                      </p>
                     )}
                   </div>
 
@@ -211,12 +229,16 @@ export const Contact = () => {
                       rows={4}
                       placeholder={t("Xabaringizni shu yerga yozing")}
                       className={`rounded-xl bg-muted/30 border-border/50 resize-none placeholder:text-muted-foreground/60 ${
-                        errors.message ? "border-red-500 focus-visible:ring-red-500" : ""
+                        errors.message
+                          ? "border-red-500 focus-visible:ring-red-500"
+                          : ""
                       }`}
                       {...register("message")}
                     />
                     {errors.message && (
-                      <p className="text-sm text-red-500">{errors.message.message}</p>
+                      <p className="text-sm text-red-500">
+                        {errors.message.message}
+                      </p>
                     )}
                   </div>
 
@@ -254,7 +276,11 @@ export const Contact = () => {
                   </div>
                   <div>
                     <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3">
-                      {i18n.language === "uz" ? "Ijtimoiy tarmoqlar" : i18n.language === "ru" ? "Соцсети" : "Follow us"}
+                      {i18n.language === "uz"
+                        ? "Ijtimoiy tarmoqlar"
+                        : i18n.language === "ru"
+                          ? "Соцсети"
+                          : "Follow us"}
                     </p>
                     <div className="flex gap-3 flex-wrap">
                       {socials.map(({ Icon, href }, i) => (

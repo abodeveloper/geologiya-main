@@ -25,6 +25,7 @@ import { Fade } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import { getNewsById } from "./api/news";
+import notFoundImage from "@/assets/not_found_image.png";
 
 const NewsDetailPage = () => {
   const { t, i18n } = useTranslation();
@@ -107,6 +108,21 @@ const NewsDetailPage = () => {
         ? [news.image]
         : [];
 
+  const normalizedImages =
+    images.length > 0
+      ? images
+          .map((img) =>
+            typeof img === "string"
+              ? img
+              : img && typeof img === "object" && "image" in img && img.image
+                ? (img.image as string)
+                : "",
+          )
+          .filter(Boolean)
+      : [];
+
+  const displayImages = normalizedImages.length > 0 ? normalizedImages : [notFoundImage];
+
   // Hozir o'qilayotgan yangilikni sidebar ro'yxatidan olib tashlash
   const filteredLastNews = lastNews?.filter((item: any) => item.id !== itemId);
 
@@ -162,7 +178,7 @@ const NewsDetailPage = () => {
               </div>
 
               {/* Carousel */}
-              {images.length > 0 && (
+              {displayImages.length > 0 && (
                 <div className="relative w-full overflow-hidden rounded-xl border border-border/50 shadow-sm bg-muted/30">
                   <Carousel
                     setApi={setApi}
@@ -173,13 +189,19 @@ const NewsDetailPage = () => {
                     className="w-full"
                   >
                     <CarouselContent>
-                      {images.map((imgUrl, index) => (
+                      {displayImages.map((imgUrl, index) => (
                         <CarouselItem key={index}>
                           <div className="relative aspect-video w-full overflow-hidden">
                             <img
-                              src={`${imgUrl.image}`}
+                              src={imgUrl}
                               alt={`${localized(news, "title")}`}
                               className="h-full w-full object-cover"
+                              onError={(e) => {
+                                const target = e.currentTarget;
+                                if (target.src !== notFoundImage) {
+                                  target.src = notFoundImage;
+                                }
+                              }}
                             />
                           </div>
                         </CarouselItem>
@@ -193,9 +215,9 @@ const NewsDetailPage = () => {
                     )}
                   </Carousel>
                   {/* Dots */}
-                  {images.length > 1 && (
+                  {displayImages.length > 1 && (
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                      {images.map((_, index) => (
+                      {displayImages.map((_, index) => (
                         <button
                           key={index}
                           onClick={() => api?.scrollTo(index)}

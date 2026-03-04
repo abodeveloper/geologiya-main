@@ -5,6 +5,7 @@ import { formatDateLocalized } from "@/lib/utils";
 import type { PostItem } from "@/features/dynamic-page/types";
 import { CalendarDays, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import notFoundImage from "@/assets/not_found_image.png";
 
 export interface NewsCardProps {
   item: PostItem;
@@ -20,6 +21,7 @@ export function NewsCard({ item, navigate, locale, size = "default" }: NewsCardP
   const { t } = useTranslation();
   const imageHeightClass = size === "sm" ? "h-40" : "h-56";
   const lang = localeToLang(locale);
+  const imageSrc = item.image ? getAbsoluteUrl(item.image) : notFoundImage;
 
   return (
     <article
@@ -37,9 +39,15 @@ export function NewsCard({ item, navigate, locale, size = "default" }: NewsCardP
       {/* Rasm */}
       <div className={`relative ${imageHeightClass} shrink-0 overflow-hidden`}>
         <img
-          src={getAbsoluteUrl(item.image ?? "")}
+          src={imageSrc}
           alt={localized(item, "title")}
           className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (target.src !== notFoundImage) {
+              target.src = notFoundImage;
+            }
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
         {item.type != null && item.type !== "" && (

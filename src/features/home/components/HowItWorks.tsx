@@ -43,7 +43,10 @@ export const HowItWorks = ({ data }: Props) => {
         : "Scientific directions in the field of earth sciences.";
 
   return (
-    <section id="howItWorks" className="relative py-20 md:py-28 overflow-hidden">
+    <section
+      id="howItWorks"
+      className="relative py-10 md:py-12 overflow-hidden"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -51,7 +54,13 @@ export const HowItWorks = ({ data }: Props) => {
         <div className="space-y-14 md:space-y-16">
           {/* Header — About ga mos */}
           <div className="text-center space-y-6 max-w-3xl mx-auto">
-            <Fade triggerOnce duration={600} direction="up" cascade damping={0.4}>
+            <Fade
+              triggerOnce
+              duration={600}
+              direction="up"
+              cascade
+              damping={0.4}
+            >
               <p className="text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-primary">
                 {headline.label}
               </p>
@@ -79,7 +88,9 @@ export const HowItWorks = ({ data }: Props) => {
               >
                 <button
                   type="button"
-                  onClick={() => navigate("/scientific-directions/" + item.slug)}
+                  onClick={() =>
+                    navigate("/scientific-directions/" + item.slug)
+                  }
                   className="group w-full text-left rounded-2xl p-5 md:p-6 bg-card/70 dark:bg-card/50 backdrop-blur-sm border border-border/50 shadow-sm hover:shadow-xl hover:shadow-primary/5 hover:border-primary/20 hover:bg-card transition-all duration-300 cursor-pointer"
                 >
                   <div className="flex items-start gap-4">
@@ -94,7 +105,10 @@ export const HowItWorks = ({ data }: Props) => {
                         {localized(item, "sub_title")}
                       </p>
                     </div>
-                    <span className="shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-muted/80 text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground group-hover:translate-x-0.5 transition-all duration-300" aria-hidden>
+                    <span
+                      className="shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-muted/80 text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground group-hover:translate-x-0.5 transition-all duration-300"
+                      aria-hidden
+                    >
                       →
                     </span>
                   </div>
@@ -102,7 +116,6 @@ export const HowItWorks = ({ data }: Props) => {
               </Fade>
             ))}
           </div>
-
         </div>
       </div>
     </section>

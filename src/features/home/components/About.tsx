@@ -61,7 +61,7 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="relative py-20 md:py-28 overflow-hidden"
+      className="relative py-10 md:py-12 overflow-hidden"
       ref={ref}
     >
       {/* Subtle background */}
