@@ -11,6 +11,7 @@ import { localized } from "@/i18n";
 import DynamicIcon from "@/shared/components/atoms/dynamic-icon/DynamicIcon";
 import ErrorMessage from "@/shared/components/atoms/error-message/ErrorMessage";
 import LoadingSpinner from "@/shared/components/atoms/loading-spinner/LoadingSpinner";
+import { EntityDetailRelatedTabs } from "@/features/dynamic-page/components/EntityDetailRelatedTabs";
 import { getPostgraduateById } from "./api/postgraduate";
 
 const PostgraduateDetailPage = () => {
@@ -110,7 +111,12 @@ const PostgraduateDetailPage = () => {
           </div>
         </div>
 
-        
+        <EntityDetailRelatedTabs
+          employees={data.employees}
+          posts={data.posts}
+          files={data.files}
+          images={data.images}
+        />
       </div>
       
     </div>

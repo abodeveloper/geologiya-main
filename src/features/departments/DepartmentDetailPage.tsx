@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
+import { EntityDetailRelatedTabs } from "@/features/dynamic-page/components/EntityDetailRelatedTabs";
 import { getDepartmentById } from "./api/department";
 
 const DepartmentDetailPage = () => {
@@ -196,6 +197,13 @@ const DepartmentDetailPage = () => {
             />
           </div>
         </Fade>
+
+        <EntityDetailRelatedTabs
+          employees={items.employees}
+          posts={items.posts}
+          files={items.files}
+          images={items.images}
+        />
       </article>
     </div>
   );
