@@ -24,6 +24,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { z } from "zod";
+import { getImageUrl } from "@/lib/utils";
 
 export const Contact = () => {
   const { t, i18n } = useTranslation();
@@ -146,7 +147,7 @@ export const Contact = () => {
               {/* Ustki qator: logo, sarlavha, tavsif — bitta gorizontal blok */}
               <div className="flex flex-wrap items-center gap-4 md:gap-6 p-6 md:px-10 md:pt-10 pb-4 border-b border-border/40">
                 <img
-                  src={`${import.meta.env.VITE_API_URL || ""}${get(company, "logo")}`}
+                  src={getImageUrl(get(company, "logo"))}
                   alt="Logo"
                   width={56}
                   height={56}

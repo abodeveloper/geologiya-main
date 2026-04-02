@@ -13,7 +13,7 @@ import {
 import { NewsCard } from "./components/NewsCard";
 import type { PostItem } from "@/features/dynamic-page/types";
 import { localized } from "@/i18n";
-import { formatDateLocalized, formatTimeLocalized } from "@/lib/utils";
+import { formatDateLocalized, formatTimeLocalized, getImageUrl } from "@/lib/utils";
 import ErrorMessage from "@/shared/components/atoms/error-message/ErrorMessage";
 import LoadingSpinner from "@/shared/components/atoms/loading-spinner/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
@@ -193,7 +193,7 @@ const NewsDetailPage = () => {
                         <CarouselItem key={index}>
                           <div className="relative aspect-video w-full overflow-hidden">
                             <img
-                              src={imgUrl}
+                              src={getImageUrl(imgUrl)}
                               alt={`${localized(news, "title")}`}
                               className="h-full w-full object-cover"
                               onError={(e) => {

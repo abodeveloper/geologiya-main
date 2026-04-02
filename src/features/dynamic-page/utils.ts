@@ -1,8 +1,5 @@
-import { getApiUrl } from "@/lib/env";
+import { getImageUrl } from "@/lib/utils";
 
 export const getAbsoluteUrl = (path: string): string => {
-  if (!path) return "";
-  if (path.startsWith("http")) return path;
-  const base = getApiUrl();
-  return `${base}${path.startsWith("/") ? "" : "/"}${path}`;
+  return getImageUrl(path, "");
 };

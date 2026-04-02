@@ -14,6 +14,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { getImageUrl } from "@/lib/utils";
 
 export interface Slide {
   id: number;
@@ -35,8 +36,6 @@ export const HeroCarousel = ({ data }: HeroCarouselProps) => {
   const { t } = useTranslation();
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-
-  const API_URL = import.meta.env?.VITE_API_URL || "";
 
   const plugin = Autoplay({
     delay: 6000,
@@ -71,7 +70,7 @@ export const HeroCarousel = ({ data }: HeroCarouselProps) => {
             >
               <div className="relative w-full h-full">
                 <img
-                  src={`${API_URL}${slide.image}`}
+                  src={getImageUrl(slide.image)}
                   alt={localized(slide, "title")}
                   className="w-full h-full object-cover"
                   loading="lazy"

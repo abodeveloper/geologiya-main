@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { localized } from "@/i18n";
+import { getImageUrl } from "@/lib/utils";
 import ErrorMessage from "@/shared/components/atoms/error-message/ErrorMessage";
 import LoadingSpinner from "@/shared/components/atoms/loading-spinner/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
@@ -47,7 +48,7 @@ const EmployeeDetailPage = () => {
   }
 
   // Rasm manzilini to'g'irlash
-  const imageUrl = employee.image ? `${employee.image}` : null;
+  const imageUrl = employee.image ? getImageUrl(typeof employee.image === 'string' ? employee.image : (employee.image as any).image) : null;
 
   return (
     <div className="min-h-screen bg-muted/5 py-10">

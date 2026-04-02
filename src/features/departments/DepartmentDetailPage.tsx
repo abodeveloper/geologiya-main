@@ -21,6 +21,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import { EntityDetailRelatedTabs } from "@/features/dynamic-page/components/EntityDetailRelatedTabs";
 import { getDepartmentById } from "./api/department";
+import { getImageUrl } from "@/lib/utils";
 
 const DepartmentDetailPage = () => {
   const { t } = useTranslation();
@@ -134,7 +135,7 @@ const DepartmentDetailPage = () => {
                       {/* aspect-video: 16:9 format (Mobilka va Desktop uchun ideal) */}
                       <div className="relative aspect-video w-full overflow-hidden bg-muted">
                         <img
-                          src={`${imgUrl.image}`}
+                          src={getImageUrl(typeof imgUrl === "string" ? imgUrl : imgUrl.image)}
                           alt={`${localized(items, "title")} - ${index + 1}`}
                           className="h-full w-full object-cover"
                         />

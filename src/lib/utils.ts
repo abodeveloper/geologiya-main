@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { getApiUrl } from "./env"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -43,3 +44,17 @@ export function formatTimeLocalized(date: Date | string, language: string): stri
   const locale = language === "ru" ? "ru-RU" : "en-US";
   return d.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" });
 }
+
+export function getImageUrl(url: string | null | undefined, fallback: string = "/placeholder.svg"): string {
+  if (!url) return fallback;
+  if (url.startsWith("http:") || url.startsWith("https:") || url.startsWith("data:")) {
+    return url;
+  }
+  
+  const baseUrl = getApiUrl();
+  const cleanBase = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
+  const cleanPath = url.startsWith("/") ? url : `/${url}`;
+  
+  return `${cleanBase}${cleanPath}`;
+}
+

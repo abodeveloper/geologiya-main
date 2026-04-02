@@ -12,6 +12,7 @@ import {
   Youtube,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { getImageUrl } from "@/lib/utils";
 
 export const Footer = () => {
   const { i18n, t } = useTranslation();
@@ -43,7 +44,7 @@ export const Footer = () => {
             <a href="/" className="inline-flex items-center gap-3 group">
               {get(company, "logo") ? (
                 <img
-                  src={`${import.meta.env.VITE_API_URL || ""}${get(company, "logo")}`}
+                  src={getImageUrl(get(company, "logo"))}
                   alt="Logo"
                   width={52}
                   height={52}

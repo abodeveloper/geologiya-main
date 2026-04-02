@@ -10,6 +10,7 @@ import { localized } from "@/i18n";
 import { ExternalLink } from "lucide-react";
 import { Fade } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
+import { getImageUrl } from "@/lib/utils";
 
 export interface Partner {
   id: number;
@@ -42,7 +43,7 @@ const PartnerCard = ({ item }: { item: Partner }) => {
       <div className="w-[240px] md:w-[260px] h-[180px] rounded-xl p-6 flex flex-col items-center justify-center gap-4 bg-muted/30 hover:bg-muted/50 border border-transparent hover:border-border transition-all duration-300">
         <div className="relative flex items-center justify-center h-14 w-full shrink-0">
           <img
-            src={`${import.meta.env.VITE_API_URL || ""}${item.image}`}
+            src={getImageUrl(item.image)}
             alt={localized(item, "title")}
             className="max-h-12 md:max-h-14 w-auto object-contain filter grayscale group-hover:grayscale-0 opacity-90 group-hover:opacity-100 transition-all duration-300 mix-blend-multiply dark:mix-blend-normal"
           />

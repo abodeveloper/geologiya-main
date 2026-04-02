@@ -41,7 +41,7 @@ import {
 import { useCompanyInfo } from "@/hooks/useCompanyInfo";
 import { useMenus } from "@/hooks/useMenus";
 import { localized } from "@/i18n";
-import { cn } from "@/lib/utils";
+import { cn, getImageUrl } from "@/lib/utils";
 import type { LocalizedObject } from "@/shared/types/localized";
 import { HoverCardPortal } from "@radix-ui/react-hover-card";
 import { get } from "lodash";
@@ -443,7 +443,7 @@ export const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 shrink-0 group min-w-0">
           <img
-            src={`${API_URL}${get(company, "logo")}`}
+            src={getImageUrl(get(company, "logo"))}
             alt="GGI Logo"
             className="h-11 w-auto md:h-12 object-contain transition-transform duration-200 group-hover:scale-[1.02] shrink-0"
           />
@@ -508,7 +508,7 @@ export const Navbar = () => {
               <SheetHeader className="p-5 pb-4 border-b border-border/40">
                 <div className="flex items-center gap-3">
                   <img
-                    src={`${API_URL}${get(company, "logo")}`}
+                    src={getImageUrl(get(company, "logo"))}
                     alt="Logo"
                     className="h-11 w-auto shrink-0"
                   />
