@@ -3,7 +3,7 @@ import { getAbsoluteUrl } from "@/features/dynamic-page/utils";
 import { localized } from "@/i18n";
 import { formatDateLocalized } from "@/lib/utils";
 import type { PostItem } from "@/features/dynamic-page/types";
-import { CalendarDays, ChevronRight } from "lucide-react";
+import { CalendarDays, ChevronRight, Eye } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import notFoundImage from "@/assets/not_found_image.png";
 
@@ -62,6 +62,12 @@ export function NewsCard({ item, navigate, locale, size = "default" }: NewsCardP
                   ? t("Desertatsiya e'loni")
                   : t("E'lon")}
             </Badge>
+          </span>
+        )}
+        {item.views_count != null && (
+          <span className="absolute right-3 top-3 z-10 flex items-center gap-1.5 rounded-md bg-black/50 px-2 py-1 text-xs font-medium text-white shadow-sm backdrop-blur-sm">
+            <Eye className="h-3.5 w-3.5 opacity-80" />
+            {item.views_count}
           </span>
         )}
       </div>

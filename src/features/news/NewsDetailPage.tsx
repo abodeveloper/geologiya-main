@@ -19,7 +19,7 @@ import LoadingSpinner from "@/shared/components/atoms/loading-spinner/LoadingSpi
 import { useQuery } from "@tanstack/react-query";
 import Autoplay from "embla-carousel-autoplay";
 import { get } from "lodash";
-import { ArrowLeft, CalendarDays, ChevronRight, Clock } from "lucide-react";
+import { ArrowLeft, CalendarDays, ChevronRight, Clock, Eye } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
@@ -170,6 +170,12 @@ const NewsDetailPage = () => {
                     <Clock className="w-3.5 h-3.5" />
                     {formatTimeLocalized(news.published_date, i18n.language)}
                   </span>
+                  {news.views_count != null && (
+                    <span className="text-muted-foreground flex items-center gap-1">
+                      <Eye className="w-3.5 h-3.5" />
+                      {news.views_count}
+                    </span>
+                  )}
                 </div>
 
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-foreground">

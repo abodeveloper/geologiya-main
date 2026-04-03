@@ -28,6 +28,7 @@ export interface PostItem extends Localizable {
   image?: string;
   type?: string;
   published_date?: string;
+  views_count?: number;
 }
 
 export interface LabItem extends Localizable {
