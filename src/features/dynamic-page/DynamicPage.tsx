@@ -462,7 +462,9 @@ const DynamicPage = () => {
 
   return (
     <div className="min-h-screen bg-muted/5 pb-10 pt-10">
-      <div className={`container mx-auto px-4 md:px-0 ${hasEmployeesSidebar ? "" : "max-w-5xl"}`}>
+      <div
+        className={`container mx-auto px-4 md:px-6 ${hasEmployeesSidebar ? "" : "max-w-5xl"}`}
+      >
         {/* Chap: Xodimlar | O'ng: title, description, kontent, tablar */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start mb-20">
           {/* Chap sidebar — faqat xodimlar bor bo'lsa */}
