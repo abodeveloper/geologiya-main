@@ -56,6 +56,7 @@
   "Sahifani yuklashning imkoni bo'lmadi.": "Sahifani yuklashning imkoni bo'lmadi.",
   "Sayt bo'ylab qidiruv": "Sayt bo'ylab qidiruv",
   "Sayt ma'lumotlarini yuklashda xatolik yuz berdi": "Sayt ma'lumotlarini yuklashda xatolik yuz berdi",
+  "Sayt test rejimida ishlamoqda": "Sayt test rejimida ishlamoqda!",
   "Siz so'ragan sahifa mavjud emas yoki ko'chirilgan.": "Siz so'ragan sahifa mavjud emas yoki ko'chirilgan.",
   "Sizdan xabar olishdan xursand bo'lamiz. Savolingiz, fikr-mulohazangiz bo'lsa biz bilan bog'laning!": "Sizdan xabar olishdan xursand bo'lamiz. Savolingiz, fikr-mulohazangiz bo'lsa biz bilan bog'laning!",
   "So'nggi desertatsiya e'lonlari": "So'nggi desertatsiya e'lonlari",
@@ -88,5 +89,9 @@
   "Yuklanmoqda": "Yuklanmoqda",
   "Yuklanmoqda...": "Yuklanmoqda...",
   "ta natija topildi": "ta natija topildi",
-  "tugmasini bosing": "tugmasini bosing"
+  "tugmasini bosing": "tugmasini bosing",
+  "Rang sxemasi": "Rang sxemasi",
+  "Brend (logotip)": "Brend (logotip)",
+  "Mineral (sovuq)": "Mineral (sovuq)",
+  "Tuproq (iliq)": "Tuproq (iliq)"
 }

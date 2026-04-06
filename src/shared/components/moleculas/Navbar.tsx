@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/hover-card";
 import { Input } from "@/components/ui/input";
 import { ModeToggle } from "@/components/ui/mode-toggle";
+import { PaletteToggle } from "@/components/ui/palette-toggle";
 import {
   Select,
   SelectContent,
@@ -488,6 +489,7 @@ export const Navbar = () => {
                 ))}
               </SelectContent>
             </Select>
+            <PaletteToggle />
             <ModeToggle />
           </div>
 
@@ -561,7 +563,8 @@ export const Navbar = () => {
                       ))}
                     </SelectContent>
                   </Select>
-                  <div className="rounded-xl border border-border/60 bg-background p-1">
+                  <div className="flex rounded-xl border border-border/60 bg-background p-1 gap-0.5">
+                    <PaletteToggle />
                     <ModeToggle />
                   </div>
                 </div>

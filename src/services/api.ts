@@ -1,7 +1,11 @@
 import api from "@/lib/axios";
 
-export const fetchCompanyInfo = async () => {
-    const response = await api.get("/main/company"); // endpoint manzili
+export type CompanyInfo = {
+    test_status?: boolean;
+};
+
+export const fetchCompanyInfo = async (): Promise<CompanyInfo> => {
+    const response = await api.get<CompanyInfo>("/main/company");
     return response.data;
 };
 

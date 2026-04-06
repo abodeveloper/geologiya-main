@@ -1,13 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/features/home/components/Footer";
 import { Navbar } from "@/shared/components/moleculas/Navbar";
+import { SocialSidebar } from "@/shared/components/moleculas/SocialSidebar";
 import { AlertCircle } from "lucide-react";
 import { Outlet } from "react-router-dom";
 
 import { useCompanyInfo } from "@/hooks/useCompanyInfo";
 import { useMenus } from "@/hooks/useMenus";
-import LoadingSpinner from "@/shared/components/atoms/loading-spinner/LoadingSpinner";
 import { DocumentHead } from "@/shared/components/atoms/document-head/DocumentHead";
+import { TestModeBanner } from "@/shared/components/atoms/TestModeBanner";
+import LoadingSpinner from "@/shared/components/atoms/loading-spinner/LoadingSpinner";
 import { useTranslation } from "react-i18next";
 
 export default function Layout() {
@@ -51,10 +53,14 @@ export default function Layout() {
     );
   }
 
+  const isTestMode = companyQuery.data?.test_status === true;
+
   return (
     <>
       <DocumentHead />
+      {isTestMode ? <TestModeBanner /> : null}
       <Navbar />
+      <SocialSidebar />
       <main>
         <Outlet />
       </main>

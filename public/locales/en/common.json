@@ -56,6 +56,7 @@
   "Sahifani yuklashning imkoni bo'lmadi.": "Unable to load the page.",
   "Sayt bo'ylab qidiruv": "Search across site",
   "Sayt ma'lumotlarini yuklashda xatolik yuz berdi": "Error loading site data",
+  "Sayt test rejimida ishlamoqda": "This site is running in test mode!",
   "Siz so'ragan sahifa mavjud emas yoki ko'chirilgan.": "The page you requested does not exist or has been moved.",
   "Sizdan xabar olishdan xursand bo'lamiz. Savolingiz, fikr-mulohazangiz bo'lsa biz bilan bog'laning!": "We'd love to hear from you. If you have any questions or feedback, feel free to contact us!",
   "So'nggi desertatsiya e'lonlari": "Latest dissertation announcements",
@@ -88,5 +89,9 @@
   "Yuklanmoqda": "Loading",
   "Yuklanmoqda...": "Loading...",
   "ta natija topildi": "results found",
-  "tugmasini bosing": "press the button"
+  "tugmasini bosing": "press the button",
+  "Rang sxemasi": "Color scheme",
+  "Brend (logotip)": "Brand (logo)",
+  "Mineral (sovuq)": "Mineral (cool)",
+  "Tuproq (iliq)": "Earth (warm)"
 }

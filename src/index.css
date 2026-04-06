@@ -100,6 +100,148 @@
     --sidebar-border: 204 35% 82%;
     --sidebar-ring: 218 32% 38%;
   }
+
+  /* ==== PALITRA: Mineral — chuqur «muz / okean tubi» yashil-ko‘k (brenddan tubdan boshqa) ==== */
+  html.dark.palette-mineral {
+    --background: 168 38% 6%;
+    --foreground: 165 25% 96%;
+    --card: 170 32% 11%;
+    --card-foreground: 165 25% 96%;
+    --popover: 172 30% 10%;
+    --popover-foreground: 165 25% 96%;
+    --primary: 168 55% 44%;
+    --primary-foreground: 168 40% 6%;
+    --secondary: 175 28% 14%;
+    --secondary-foreground: 160 20% 92%;
+    --muted: 175 22% 13%;
+    --muted-foreground: 160 12% 62%;
+    --accent: 186 70% 48%;
+    --accent-foreground: 168 40% 6%;
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 172 26% 16%;
+    --input: 172 26% 16%;
+    --ring: 168 55% 44%;
+    --chart-1: 168 55% 44%;
+    --chart-2: 186 60% 42%;
+    --chart-3: 160 45% 50%;
+    --chart-4: 195 40% 32%;
+    --chart-5: 150 40% 38%;
+    --sidebar-background: 168 40% 5%;
+    --sidebar-foreground: 165 25% 96%;
+    --sidebar-primary: 168 55% 44%;
+    --sidebar-primary-foreground: 168 40% 6%;
+    --sidebar-accent: 175 28% 14%;
+    --sidebar-accent-foreground: 160 20% 92%;
+    --sidebar-border: 172 26% 16%;
+    --sidebar-ring: 168 55% 44%;
+  }
+
+  html.light.palette-mineral {
+    --background: 168 38% 91%;
+    --foreground: 168 45% 14%;
+    --card: 165 30% 99%;
+    --card-foreground: 168 45% 14%;
+    --popover: 165 28% 100%;
+    --popover-foreground: 168 45% 14%;
+    --primary: 168 50% 30%;
+    --primary-foreground: 165 30% 99%;
+    --secondary: 172 35% 86%;
+    --secondary-foreground: 168 40% 18%;
+    --muted: 170 32% 88%;
+    --muted-foreground: 168 22% 34%;
+    --accent: 186 55% 38%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 170 28% 78%;
+    --input: 170 28% 78%;
+    --ring: 168 50% 30%;
+    --chart-1: 168 50% 30%;
+    --chart-2: 186 45% 36%;
+    --chart-3: 160 40% 40%;
+    --chart-4: 195 35% 38%;
+    --chart-5: 150 38% 42%;
+    --sidebar-background: 168 36% 90%;
+    --sidebar-foreground: 168 45% 14%;
+    --sidebar-primary: 168 50% 30%;
+    --sidebar-primary-foreground: 165 30% 99%;
+    --sidebar-accent: 172 35% 86%;
+    --sidebar-accent-foreground: 168 40% 18%;
+    --sidebar-border: 170 28% 78%;
+    --sidebar-ring: 168 50% 30%;
+  }
+
+  /* ==== PALITRA: Terra — qora-qizil tuproq / qog‘oz (ko‘k brenddan tubdan boshqa) ==== */
+  html.dark.palette-terra {
+    --background: 18 32% 7%;
+    --foreground: 38 28% 95%;
+    --card: 22 28% 11%;
+    --card-foreground: 38 28% 95%;
+    --popover: 20 26% 10%;
+    --popover-foreground: 38 28% 95%;
+    --primary: 28 48% 52%;
+    --primary-foreground: 18 32% 7%;
+    --secondary: 25 22% 15%;
+    --secondary-foreground: 36 22% 90%;
+    --muted: 25 18% 14%;
+    --muted-foreground: 35 14% 60%;
+    --accent: 14 78% 48%;
+    --accent-foreground: 38 28% 98%;
+    --destructive: 0 62% 42%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 22 20% 18%;
+    --input: 22 20% 18%;
+    --ring: 28 48% 52%;
+    --chart-1: 28 48% 52%;
+    --chart-2: 35 38% 48%;
+    --chart-3: 14 78% 48%;
+    --chart-4: 22 35% 32%;
+    --chart-5: 42 45% 46%;
+    --sidebar-background: 16 30% 6%;
+    --sidebar-foreground: 38 28% 95%;
+    --sidebar-primary: 28 48% 52%;
+    --sidebar-primary-foreground: 18 32% 7%;
+    --sidebar-accent: 25 22% 15%;
+    --sidebar-accent-foreground: 36 22% 90%;
+    --sidebar-border: 22 20% 18%;
+    --sidebar-ring: 28 48% 52%;
+  }
+
+  html.light.palette-terra {
+    --background: 38 42% 88%;
+    --foreground: 25 35% 16%;
+    --card: 40 38% 97%;
+    --card-foreground: 25 35% 16%;
+    --popover: 42 36% 99%;
+    --popover-foreground: 25 35% 16%;
+    --primary: 26 42% 32%;
+    --primary-foreground: 40 38% 97%;
+    --secondary: 35 38% 82%;
+    --secondary-foreground: 25 32% 18%;
+    --muted: 36 32% 84%;
+    --muted-foreground: 25 18% 36%;
+    --accent: 14 72% 38%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 60% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 32 30% 72%;
+    --input: 32 30% 72%;
+    --ring: 26 42% 32%;
+    --chart-1: 26 42% 32%;
+    --chart-2: 35 32% 40%;
+    --chart-3: 14 72% 38%;
+    --chart-4: 22 30% 34%;
+    --chart-5: 42 40% 44%;
+    --sidebar-background: 38 40% 87%;
+    --sidebar-foreground: 25 35% 16%;
+    --sidebar-primary: 26 42% 32%;
+    --sidebar-primary-foreground: 40 38% 97%;
+    --sidebar-accent: 35 38% 82%;
+    --sidebar-accent-foreground: 25 32% 18%;
+    --sidebar-border: 32 30% 72%;
+    --sidebar-ring: 26 42% 32%;
+  }
 }
 
 @layer base {
@@ -120,5 +262,50 @@
   }
   body {
     @apply bg-background text-foreground font-medium;
+  }
+
+  /* Mineral / Terra: butun sahifa foni gradient — brend bilan vizual farq kuchayadi */
+  html.dark.palette-mineral body {
+    background-image:
+      radial-gradient(ellipse 130% 90% at 50% -25%, hsl(168 55% 18% / 0.55), transparent 52%),
+      radial-gradient(ellipse 90% 70% at 100% 85%, hsl(195 60% 14% / 0.45), transparent 48%),
+      radial-gradient(ellipse 70% 50% at 0% 60%, hsl(150 45% 12% / 0.35), transparent 45%),
+      hsl(var(--background));
+    background-attachment: fixed;
+    background-color: transparent;
+  }
+
+  html.light.palette-mineral body {
+    background-image:
+      linear-gradient(
+        168deg,
+        hsl(165 48% 96%) 0%,
+        hsl(175 40% 90%) 38%,
+        hsl(var(--background)) 72%,
+        hsl(170 35% 86%) 100%
+      );
+    background-attachment: fixed;
+    background-color: transparent;
+  }
+
+  html.dark.palette-terra body {
+    background-image:
+      radial-gradient(ellipse 100% 80% at 50% 110%, hsl(22 45% 12% / 0.85), transparent 50%),
+      radial-gradient(ellipse 80% 60% at 0% 0%, hsl(14 50% 14% / 0.4), transparent 42%),
+      hsl(var(--background));
+    background-attachment: fixed;
+    background-color: transparent;
+  }
+
+  html.light.palette-terra body {
+    background-image:
+      linear-gradient(
+        180deg,
+        hsl(42 48% 94%) 0%,
+        hsl(var(--background)) 42%,
+        hsl(32 38% 84%) 100%
+      );
+    background-attachment: fixed;
+    background-color: transparent;
   }
 }

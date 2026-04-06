@@ -56,6 +56,7 @@
   "Sahifani yuklashning imkoni bo'lmadi.": "Не удалось загрузить страницу.",
   "Sayt bo'ylab qidiruv": "Поиск по сайту",
   "Sayt ma'lumotlarini yuklashda xatolik yuz berdi": "Ошибка при загрузке данных сайта",
+  "Sayt test rejimida ishlamoqda": "Сайт работает в тестовом режиме!",
   "Siz so'ragan sahifa mavjud emas yoki ko'chirilgan.": "Запрошенная страница не существует или была перемещена.",
   "Sizdan xabar olishdan xursand bo'lamiz. Savolingiz, fikr-mulohazangiz bo'lsa biz bilan bog'laning!": "Мы рады слышать от вас. Если у вас есть вопросы или предложения, свяжитесь с нами!",
   "So'nggi desertatsiya e'lonlari": "Последние диссертационные объявления",
@@ -88,5 +89,9 @@
   "Yuklanmoqda": "Загрузка",
   "Yuklanmoqda...": "Загрузка...",
   "ta natija topildi": "результатов найдено",
-  "tugmasini bosing": "нажмите кнопку"
+  "tugmasini bosing": "нажмите кнопку",
+  "Rang sxemasi": "Цветовая схема",
+  "Brend (logotip)": "Бренд (логотип)",
+  "Mineral (sovuq)": "Минерал (холодная)",
+  "Tuproq (iliq)": "Земля (тёплая)"
 }

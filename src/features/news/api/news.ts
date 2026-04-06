@@ -6,22 +6,9 @@ export const getLastNews = async () => {
 };
 
 export const getNewsById = async (id: string | number | undefined) => {
-  const visitorId = localStorage.getItem("visitor_id");
-  const headers: Record<string, string> = {};
-  if (visitorId) {
-    headers["x-visitor-id"] = visitorId;
-  }
-
-  const response = await api.get(`/api/posts/${id}/`, { headers });
-
-  const newVisitorId = response.headers["x-visitor-id"];
-  if (newVisitorId) {
-    localStorage.setItem("visitor_id", newVisitorId);
-  }
-
+  const response = await api.get(`/api/posts/${id}/`);
   return response.data;
 };
-
 
 // --- TYPE DEFINITIONS ---
 export interface NewsItem {
