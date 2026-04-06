@@ -76,22 +76,16 @@ const PartnerCard = ({ item }: { item: Partner }) => {
 };
 
 export const Partners = ({ data }: Props) => {
-  const { i18n } = useTranslation();
+  const { t } = useTranslation();
   const doubleData = [...data, ...data];
 
-  const headline =
-    i18n.language === "uz"
-      ? { label: "Hamkorlar", title: "Bizning", highlight: "hamkorlar" }
-      : i18n.language === "ru"
-        ? { label: "Партнеры", title: "Наши", highlight: "партнеры" }
-        : { label: "Partners", title: "Our", highlight: "partners" };
+  const headline = {
+    label: t("Hamkorlar"),
+    title: t("Bizning (hamkorlar sarlavhasi)"),
+    highlight: t("Hamkorlar (sarlavha 2)"),
+  };
 
-  const description =
-    i18n.language === "uz"
-      ? "Xalqaro va mahalliy hamkorlarimiz bilan birga ishlaymiz."
-      : i18n.language === "ru"
-        ? "Мы работаем с международными и местными партнерами."
-        : "We work with international and local partners.";
+  const description = t("Hamkorlar haqida qisqa");
 
   return (
     <>

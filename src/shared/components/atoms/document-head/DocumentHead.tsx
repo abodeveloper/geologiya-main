@@ -16,104 +16,85 @@ const buildKeywords = (seed: string[]): string => {
   return merged.join(", ");
 };
 
-const SITE_META: Record<
-  string,
-  { title: string; keywords: string; description: string }
-> = {
-  uz: {
-    title: "Neft va gaz konlari geologiyasi hamda qidiruvi instituti",
-    keywords: buildKeywords([
-      "neft",
-      "gaz",
-      "geologiya",
-      "qidiruv",
-      "institut",
-      "NGGQI",
-      "O'zbekiston",
-      "neft va gaz",
-      "ilmiy tadqiqot",
-      "neft-gaz konlari",
-      "geologik qidiruv",
-      "uglevodorod",
-      "quduq",
-      "seysmika",
-      "geofizika",
-    ]),
-    description:
-      "Neft va gaz konlari geologiyasi hamda qidiruvi instituti — O'zbekistonda neft-gaz sohasidagi ilmiy va amaliy tadqiqotlar.",
-  },
-  ru: {
-    title: "Институт геологии и разведки нефтяных и газовых месторождений",
-    keywords: buildKeywords([
-      "нефть",
-      "газ",
-      "геология",
-      "разведка",
-      "институт",
-      "НГГКИ",
-      "Узбекистан",
-      "нефть и газ",
-      "научные исследования",
-      "нефтегазовые месторождения",
-      "углеводороды",
-      "скважина",
-      "сейсмика",
-      "геофизика",
-    ]),
-    description:
-      "Институт геологии и разведки нефтяных и газовых месторождений — научные и прикладные исследования в сфере нефти и газа в Узбекистане.",
-  },
-  en: {
-    title: "Institute of Geology and Exploration of Oil and Gas Fields",
-    keywords: buildKeywords([
-      "oil",
-      "gas",
-      "geology",
-      "exploration",
-      "institute",
-      "NGGQI",
-      "Uzbekistan",
-      "oil and gas",
-      "research",
-      "hydrocarbon exploration",
-      "hydrocarbon",
-      "well",
-      "seismic",
-      "geophysics",
-    ]),
-    description:
-      "Institute of Geology and Exploration of Oil and Gas Fields — scientific and applied research in oil and gas in Uzbekistan.",
-  },
+/** Tilga qarab faqat <title> / og:title uchun */
+const SITE_TITLE: Record<string, string> = {
+  uz: "H.M.Abdullayev nomidagi Geologiya va geofizika instituti",
+  ru: "Институт геологии и геофизики имени Х.М. Абдуллаева",
+  en: "Institute of Geology and Geophysics named after H.M. Abdullaev",
 };
+
+/** SEO: barcha tillar uchun bir xil (o‘zgarmaydi) */
+const SITE_KEYWORDS = buildKeywords([
+  "H.M.Abdullayev",
+  "Abdullayev",
+  "geologiya",
+  "geofizika",
+  "institut",
+  "GGI",
+  "NGGQI",
+  "O'zbekiston",
+  "Toshkent",
+  "neft",
+  "gaz",
+  "qidiruv",
+  "neft va gaz",
+  "ilmiy tadqiqot",
+  "neft-gaz konlari",
+  "geologik qidiruv",
+  "uglevodorod",
+  "quduq",
+  "seysmika",
+]);
+
+const SITE_DESCRIPTION =
+  "H.M.Abdullayev nomidagi Geologiya va geofizika instituti (GGI) — O'zbekistonda yer fanlari, neft-gaz geologiyasi va geofizika bo‘yicha ilmiy tadqiqotlar va xizmatlar.";
+
+function setOrCreateMeta(attr: "name" | "property", key: string, content: string) {
+  let el = document.querySelector(`meta[${attr}="${key}"]`);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
 
 export function DocumentHead() {
   const { i18n } = useTranslation();
   const { data: company } = useCompanyInfo();
-  const lang = i18n.language?.split("-")[0] || "uz";
 
   useEffect(() => {
-    const m = SITE_META[lang] ?? SITE_META.uz;
-    document.title = company ? localized(company, "name") : m.title;
+    const applyMeta = () => {
+      const raw = i18n.resolvedLanguage || i18n.language || "uz";
+      const lang = raw.split("-")[0];
 
-    const html = document.documentElement;
-    html.setAttribute("lang", lang === "en" ? "en" : lang === "ru" ? "ru" : "uz");
+      const orgName = company ? localized(company, "name").trim() : "";
+      const fallbackTitle = SITE_TITLE[lang] ?? SITE_TITLE.uz;
+      const title = orgName || fallbackTitle;
 
-    let metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (!metaKeywords) {
-      metaKeywords = document.createElement("meta");
-      metaKeywords.setAttribute("name", "keywords");
-      document.head.appendChild(metaKeywords);
-    }
-    metaKeywords.setAttribute("content", m.keywords);
+      document.title = title;
 
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement("meta");
-      metaDescription.setAttribute("name", "description");
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute("content", m.description);
-  }, [lang, company]);
+      const htmlLang = lang === "en" ? "en" : lang === "ru" ? "ru" : "uz";
+      document.documentElement.setAttribute("lang", htmlLang);
+
+      setOrCreateMeta("name", "keywords", SITE_KEYWORDS);
+      setOrCreateMeta("name", "description", SITE_DESCRIPTION);
+
+      setOrCreateMeta("property", "og:title", title);
+      setOrCreateMeta("property", "og:description", SITE_DESCRIPTION);
+      setOrCreateMeta(
+        "property",
+        "og:locale",
+        htmlLang === "en" ? "en_US" : htmlLang === "ru" ? "ru_RU" : "uz_UZ",
+      );
+    };
+
+    applyMeta();
+    i18n.on("languageChanged", applyMeta);
+    return () => {
+      i18n.off("languageChanged", applyMeta);
+    };
+  }, [i18n, company]);
 
   return null;
 }

@@ -37,10 +37,10 @@ export default function Layout() {
         </div>
         <div className="space-y-2">
           <h1 className="text-2xl font-bold text-foreground">
-            {t("Sayt ma’lumotlarini yuklashda xatolik yuz berdi")}
+            {t("Sayt ma'lumotlarini yuklashda xatolik yuz berdi")}
           </h1>
           <p className="max-w-md text-muted-foreground">
-            {t("Iltimos, internetingizni tekshiring yoki keyinroq qayta urinib ko‘ring.")}
+            {t("Iltimos, internetingizni tekshiring yoki keyinroq qayta urinib ko'ring.")}
           </p>
         </div>
         <Button onClick={refetch} size="lg">

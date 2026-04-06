@@ -92,35 +92,15 @@ export const NewsPage = () => {
             damping={0.3}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-center">
-              {i18n.language === "uz" ? (
-                <>
-                  Yangiliklar va{" "}
-                  <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-                    E'lonlar
-                  </span>
-                </>
-              ) : i18n.language === "ru" ? (
-                <>
-                  Новости и{" "}
-                  <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-                    объявления
-                  </span>
-                </>
-              ) : (
-                <>
-                  News and{" "}
-                  <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-                    Announcements
-                  </span>
-                </>
-              )}
+              {t("Yangiliklar va e'lonlar (sarlavha 1)")}{" "}
+              <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
+                {t("Yangiliklar va e'lonlar (sarlavha 2)")}
+              </span>
             </h2>
             <p className="text-xl text-muted-foreground text-center font-light">
-              {i18n.language === "uz"
-                ? "GGI dagi so'nggi yangiliklar, ilmiy yutuqlar va tadbirlardan xabardor bo'ling"
-                : i18n.language === "ru"
-                ? "Будьте в курсе последних новостей, научных достижений и событий GGI"
-                : "Stay informed about the latest news, scientific achievements, and events at GGI"}
+              {t(
+                "GGI dagi so'nggi yangiliklar, ilmiy yutuqlar va tadbirlardan xabardor bo'ling",
+              )}
             </p>
           </Fade>
         </div>

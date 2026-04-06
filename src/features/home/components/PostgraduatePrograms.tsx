@@ -31,21 +31,15 @@ interface Props {
 
 export const PostgraduatePrograms = ({ data }: Props) => {
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  const headline =
-    i18n.language === "uz"
-      ? { label: "Ta'lim", title: "Oliy ta'limdan", highlight: "keyingi ta'lim" }
-      : i18n.language === "ru"
-        ? { label: "Образование", title: "Послевузовское", highlight: "образование" }
-        : { label: "Education", title: "Postgraduate", highlight: "education" };
+  const headline = {
+    label: t("Magistratura (yorliq)"),
+    title: t("Magistratura (sarlavha 1)"),
+    highlight: t("Magistratura (sarlavha 2)"),
+  };
 
-  const description =
-    i18n.language === "uz"
-      ? "Ilmiy faoliyatingizni yangi bosqichga olib chiqing – PhD, DSc va magistratura dasturlarimiz orqali."
-      : i18n.language === "ru"
-        ? "Поднимите свою научную деятельность на новый уровень с помощью наших программ PhD, DSc и магистратуры."
-        : "Take your academic career to the next level with our PhD, DSc, and Master's programs.";
+  const description = t("Magistratura va doktorantura haqida");
 
   return (
     <section

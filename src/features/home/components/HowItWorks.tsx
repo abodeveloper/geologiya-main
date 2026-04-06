@@ -25,22 +25,16 @@ interface Props {
 }
 
 export const HowItWorks = ({ data }: Props) => {
-  const { i18n } = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const headline =
-    i18n.language === "uz"
-      ? { label: "Yo'nalishlar", title: "Ilmiy", highlight: "yo'nalishlar" }
-      : i18n.language === "ru"
-        ? { label: "Направления", title: "Научные", highlight: "направления" }
-        : { label: "Directions", title: "Scientific", highlight: "directions" };
+  const headline = {
+    label: t("Yo'nalishlar (yorliq)"),
+    title: t("Ilmiy yo'nalishlar (sarlavha 1)"),
+    highlight: t("Ilmiy yo'nalishlar (sarlavha 2)"),
+  };
 
-  const description =
-    i18n.language === "uz"
-      ? "Yer fanlari sohasidagi turli fanlararo tadqiqot yo'nalishlarimiz."
-      : i18n.language === "ru"
-        ? "Научные направления в области земных наук."
-        : "Scientific directions in the field of earth sciences.";
+  const description = t("Ilmiy yo'nalishlar haqida");
 
   return (
     <section

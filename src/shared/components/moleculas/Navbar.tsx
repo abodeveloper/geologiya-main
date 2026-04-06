@@ -91,6 +91,7 @@ const SearchInputMobile = ({
   className?: string;
   onSearch?: () => void;
 }) => {
+  const { t } = useTranslation();
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -108,7 +109,7 @@ const SearchInputMobile = ({
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
       <Input
         type="text"
-        placeholder="Search..."
+        placeholder={`${t("Nima qidiryapsiz?")}...`}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className="h-11 pl-10 pr-4 rounded-xl border-border/60 bg-muted/30 focus-visible:ring-primary"
@@ -116,7 +117,7 @@ const SearchInputMobile = ({
       <button
         type="submit"
         className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary transition-colors p-1"
-        aria-label="Search"
+        aria-label={t("Qidirish")}
       >
         <Search className="h-4 w-4" />
       </button>
@@ -436,6 +437,12 @@ export const Navbar = () => {
     (l) => l.code === (i18n.resolvedLanguage || i18n.language),
   );
 
+  const handleLanguageChange = (code: string) => {
+    void i18n.changeLanguage(code).then(() => {
+      window.location.reload();
+    });
+  };
+
   const API_URL = import.meta.env.VITE_API_URL || "";
 
   return (
@@ -466,7 +473,7 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center gap-1">
             <Select
               value={i18n.resolvedLanguage || i18n.language}
-              onValueChange={(v) => i18n.changeLanguage(v)}
+              onValueChange={handleLanguageChange}
             >
               <SelectTrigger className="h-9 w-[70px] rounded-lg border-border/60 bg-transparent hover:bg-muted/50">
                 <SelectValue>
@@ -540,7 +547,7 @@ export const Navbar = () => {
                 <div className="flex items-center gap-3">
                   <Select
                     value={i18n.resolvedLanguage || i18n.language}
-                    onValueChange={(v) => i18n.changeLanguage(v)}
+                    onValueChange={handleLanguageChange}
                   >
                     <SelectTrigger className="flex-1 h-10 rounded-xl bg-background border-border/60">
                       <SelectValue>

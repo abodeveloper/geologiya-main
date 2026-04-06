@@ -27,22 +27,16 @@ import { z } from "zod";
 import { getImageUrl } from "@/lib/utils";
 
 export const Contact = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { data: company } = useCompanyInfo();
 
-  const headline =
-    i18n.language === "uz"
-      ? { label: "Aloqa", title: "Biz bilan", highlight: "bog'laning" }
-      : i18n.language === "ru"
-        ? { label: "Контакты", title: "Свяжитесь", highlight: "с нами" }
-        : { label: "Contact", title: "Get in", highlight: "touch" };
+  const headline = {
+    label: t("Aloqa"),
+    title: t("Biz bilan (sarlavha 1)"),
+    highlight: t("Biz bilan (sarlavha 2)"),
+  };
 
-  const description =
-    i18n.language === "uz"
-      ? "Savolingiz yoki taklifingiz bo'lsa — xabar qoldiring, tez orada javob beramiz."
-      : i18n.language === "ru"
-        ? "Оставьте сообщение — мы ответим в ближайшее время."
-        : "Leave a message and we'll get back to you soon.";
+  const description = t("Aloqa bo'limi qisqa tavsif");
 
   const contactSchema = useMemo(
     () =>
@@ -148,7 +142,7 @@ export const Contact = () => {
               <div className="flex flex-wrap items-center gap-4 md:gap-6 p-6 md:px-10 md:pt-10 pb-4 border-b border-border/40">
                 <img
                   src={getImageUrl(get(company, "logo"))}
-                  alt="Logo"
+                  alt={t("Logotip")}
                   width={56}
                   height={56}
                   className="object-contain shrink-0"
@@ -156,15 +150,11 @@ export const Contact = () => {
                 <div className="h-10 w-px bg-border/60 hidden sm:block rounded-full" />
                 <div className="min-w-0 flex-1 space-y-1">
                   <h3 className="text-lg md:text-xl font-semibold text-foreground">
-                    {i18n.language === "uz"
-                      ? "Xabar yuboring"
-                      : i18n.language === "ru"
-                        ? "Напишите нам"
-                        : "Send a message"}
+                    {t("Xabar yuboring")}
                   </h3>
                   <p className="text-sm md:text-base text-muted-foreground font-light leading-relaxed max-w-2xl">
                     {t(
-                      "Sizdan xabar olishdan xursand bo'lamiz. Savolingiz yoki fikringiz bo'lsa yozing.",
+                      "Sizdan xabar olishdan xursand bo'lamiz. Savolingiz, fikr-mulohazangiz bo'lsa biz bilan bog'laning!",
                     )}
                   </p>
                 </div>
@@ -266,7 +256,7 @@ export const Contact = () => {
                 <div className="flex flex-col gap-4 border-t lg:border-t-0 lg:border-l border-border/40 pt-8 lg:pt-0 lg:pl-8">
                   <div className="rounded-2xl overflow-hidden border border-border/50 bg-card/50 shadow-sm h-[220px] sm:h-[260px] min-h-[200px]">
                     <iframe
-                      title="Yandex Map"
+                      title={t("Xarita")}
                       src="https://yandex.ru/map-widget/v1/?ll=69.339532%2C41.340597&z=16&l=map"
                       width="100%"
                       height="100%"
@@ -277,11 +267,7 @@ export const Contact = () => {
                   </div>
                   <div>
                     <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3">
-                      {i18n.language === "uz"
-                        ? "Ijtimoiy tarmoqlar"
-                        : i18n.language === "ru"
-                          ? "Соцсети"
-                          : "Follow us"}
+                      {t("Ijtimoiy tarmoqlar")}
                     </p>
                     <div className="flex gap-3 flex-wrap">
                       {socials.map(({ Icon, href }, i) => (
@@ -291,7 +277,7 @@ export const Contact = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-3 rounded-xl bg-muted/60 text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all duration-300"
-                          aria-label="Social link"
+                          aria-label={t("Ijtimoiy tarmoq havolasi")}
                         >
                           <Icon className="w-5 h-5" />
                         </a>

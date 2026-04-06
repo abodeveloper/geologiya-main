@@ -50,7 +50,8 @@ i18next
   .use(LanguageDetector) // 2. DETEKTOR ULANDI
   .use(initReactI18next)
   .init({
-    lng: "uz", // Sukut bo‘yicha o‘zbek tili (birinchi kirishda)
+    // lng ni bu yerda bermang: berilsa, har reloadda shu til ishlatiladi va
+    // LanguageDetector (localStorage / cookie) e’tiborga olinmaydi.
     fallbackLng: "uz",
     supportedLngs: ["uz", "ru", "en"],
     ns: ["common"],

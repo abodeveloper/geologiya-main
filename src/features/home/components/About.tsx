@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 
 export const About = () => {
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
   const { data } = useCompanyInfo();
 
   const [ref, inView] = useInView({
@@ -44,19 +44,13 @@ export const About = () => {
     },
   ];
 
-  const headline =
-    i18n.language === "uz"
-      ? { label: "Biz haqimizda", title: "Raqamlarda", highlight: "bizning ta'sirimiz" }
-      : i18n.language === "ru"
-        ? { label: "О нас", title: "В цифрах", highlight: "наше влияние" }
-        : { label: "About us", title: "In numbers", highlight: "our impact" };
+  const headline = {
+    label: t("Biz haqimizda"),
+    title: t("Raqamlarda"),
+    highlight: t("Bizning ta'sirimiz"),
+  };
 
-  const description =
-    i18n.language === "uz"
-      ? "GGI – zamonaviy geologiya fanining oldingi qatorida: ilmiy izlanish, innovatsion yechimlar va amaliy natijalar. Har bir aʼzomiz – o‘z sohasida tajribali mutaxassis va tabiatning chuqur sirlarini ochishga qodir geolog."
-      : i18n.language === "ru"
-        ? "GGI – сильная команда в авангарде современной геологии, ориентированная на научные исследования, инновационные решения и практические результаты. Каждый из наших членов – опытный специалист и геолог, способный раскрывать глубокие тайны природы."
-        : "GGI is a strong team at the forefront of modern geological science, focused on research, innovation and practical results. Each of our members is an experienced specialist and geologist capable of revealing the deep secrets of nature.";
+  const description = t("GGI haqida qisqa matn (About)");
 
   return (
     <section

@@ -63,19 +63,15 @@ export const NewsSection = ({ data }: Props) => {
     return t("Barchasini ko'rish");
   };
 
-  const headline =
-    i18n.language === "uz"
-      ? { label: "Yangiliklar", title: "Yangiliklar va", highlight: "e'lonlar" }
-      : i18n.language === "ru"
-        ? { label: "Новости", title: "Новости и", highlight: "объявления" }
-        : { label: "News", title: "News and", highlight: "announcements" };
+  const headline = {
+    label: t("Yangiliklar"),
+    title: t("Yangiliklar va e'lonlar (sarlavha 1)"),
+    highlight: t("Yangiliklar va e'lonlar (sarlavha 2)"),
+  };
 
-  const description =
-    i18n.language === "uz"
-      ? "GGI dagi so'nggi yangiliklar, ilmiy yutuqlar va tadbirlardan xabardor bo'ling."
-      : i18n.language === "ru"
-        ? "Будьте в курсе последних новостей, научных достижений и мероприятий GGI."
-        : "Stay updated with the latest news, research and events at GGI.";
+  const description = t(
+    "GGI dagi so'nggi yangiliklar, ilmiy yutuqlar va tadbirlardan xabardor bo'ling",
+  );
 
   const currentItems = getDisplayData();
 

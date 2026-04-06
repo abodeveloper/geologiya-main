@@ -17,7 +17,7 @@ export default function NotFoundPage() {
           {t("Sahifa topilmadi")}
         </p>
         <p className="max-w-md text-sm text-muted-foreground">
-          {t("Siz so‘ragan sahifa mavjud emas yoki ko‘chirilgan.")}
+          {t("Siz so'ragan sahifa mavjud emas yoki ko'chirilgan.")}
         </p>
       </div>
       <Button asChild size="lg">

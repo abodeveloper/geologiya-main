@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 import { getImageUrl } from "@/lib/utils";
 
 export const Footer = () => {
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
   const { data: company } = useCompanyInfo();
 
   const socials = [
@@ -25,12 +25,7 @@ export const Footer = () => {
     { Icon: Youtube, href: get(company, "youtube", "https://www.youtube.com") },
   ];
 
-  const tagline =
-    i18n.language === "uz"
-      ? "Geologiya sohasida tadqiqot, ta'lim va innovatsiyalarda yetakchi institut."
-      : i18n.language === "ru"
-        ? "Ведущий институт в области исследований, образования и инноваций в геологии."
-        : "A leading institute in research, education, and innovation in the field of geology.";
+  const tagline = t("Footer: institut haqida qischa");
 
   return (
     <footer className="relative border-t border-border/50 bg-muted/20 overflow-hidden">
@@ -45,7 +40,7 @@ export const Footer = () => {
               {get(company, "logo") ? (
                 <img
                   src={getImageUrl(get(company, "logo"))}
-                  alt="Logo"
+                  alt={t("Logotip")}
                   width={52}
                   height={52}
                   className="object-contain"
@@ -72,7 +67,7 @@ export const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-xl bg-background/80 border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
-                  aria-label="Social"
+                  aria-label={t("Ijtimoiy tarmoq havolasi")}
                 >
                   <Icon className="w-5 h-5" />
                 </a>
@@ -113,7 +108,7 @@ export const Footer = () => {
           <div className="lg:col-span-5 min-h-[250px] md:min-h-0">
             <div className="rounded-2xl overflow-hidden border border-border/50 bg-card/50 shadow-sm h-[260px] md:h-[210px]">
               <iframe
-                title="Yandex Map"
+                title={t("Xarita")}
                 src="https://yandex.ru/map-widget/v1/?ll=69.339532%2C41.340597&z=16&l=map"
                 width="100%"
                 height="100%"

@@ -131,7 +131,7 @@ const SearchPage = () => {
       page_files: t("Hujjatlar"),
       pages: t("Sahifalar"),
     };
-    return titles[key] || key;
+    return titles[key] ?? t("Boshqa natijalar");
   };
 
   return (
