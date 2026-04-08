@@ -455,7 +455,7 @@ export const Navbar = () => {
             alt="GGI Logo"
             className="h-11 w-auto md:h-12 object-contain transition-transform duration-200 group-hover:scale-[1.02] shrink-0"
           />
-          <div className="hidden sm:flex flex-col leading-tight min-w-0 max-w-[200px] md:max-w-[210px]">
+          <div className="hidden sm:flex flex-col leading-tight min-w-0 max-w-[200px] md:max-w-[250px]">
             <span className="text-sm font-semibold text-foreground line-clamp-2 break-words">
               {localized(company as LocalizedObject, "name")}
             </span>
